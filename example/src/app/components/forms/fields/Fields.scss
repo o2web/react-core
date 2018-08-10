@@ -1,0 +1,23 @@
+@import "../../../../assets/styles/mixins/mixins";
+@import "../../../../assets/styles/tools/colors";
+
+.field{
+  display: inline-block;
+  margin: rem(5) 0;
+  position: relative;
+  padding-bottom: rem(15);
+}
+.field__error{
+  position: absolute;
+  bottom: 0;
+  color: $errors;
+  font-size: rem(12);
+  display: block;
+  left: 0
+}
+
+.field__label{
+  width: 100%;
+  display: block;
+  margin-bottom: rem(3);
+}

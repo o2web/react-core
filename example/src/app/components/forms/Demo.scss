@@ -1,0 +1,12 @@
+@import '../../../assets/styles/mixins/mixins';
+
+.form--demo{
+  display: flex;
+  max-width: rem(750);
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > *{
+    width: 47.5%;
+  }
+}

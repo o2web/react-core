@@ -1,0 +1,35 @@
+@import "../../../../../assets/styles/mixins/mixins";
+@import "../../../../../assets/styles/tools/colors";
+
+.field__radio{
+  display: none;
+  &:checked + .field__radio__label{
+    &:after{
+      content: "";
+      display: block;
+      width: rem(8);
+      height: rem(8);
+      position: absolute;
+      top: rem(4);
+      left: rem(2);
+      background-color: $black;
+      border-radius: 50%;
+    }
+  }
+}
+.field__radio__label{
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: rem(10);
+  &:before{
+    content: "";
+    display: block;
+    border: 1px solid $black;
+    width: rem(10);
+    height: rem(10);
+    margin-right: rem(5);
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "o2web-react-core-example",
+  "homepage": "https://o2web.github.io/o2web-react-core",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "ajv": "^6.5.2",
+    "apollo-boost": "^0.1.12",
+    "babel-eslint": "^8.2.6",
+    "core-js": "^2.5.7",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "o2web-react-core": "file:..",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-breadcrumbs": "^2.1.6",
+    "react-cookie": "^2.2.0",
+    "react-dom": "^16.4.1",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-action-creator": "^2.3.0",
+    "redux-form": "^7.4.2",
+    "redux-i18n": "^1.5.13",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "react-app-rewire-eslint": "^0.2.3",
+    "react-app-rewire-scss": "^1.0.2",
+    "react-app-rewired": "^1.5.2"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-js": "react-scripts start",
+    "lint": "jshint .",
+    "validate": "npm ls"
+  }
+}
