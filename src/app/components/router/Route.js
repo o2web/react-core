@@ -7,9 +7,9 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import translateRoute from '../../helpers/routes-translator';
 
-function TranslatedRoute({ path, lang, ...props }) {
+function TranslatedRoute({ path, lang, ...props }, { t }) {
   return (
-    <Route {...props} path={translateRoute(path, lang)} />
+    <Route {...props} path={translateRoute(path, t)} />
   );
 }
 

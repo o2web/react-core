@@ -1,16 +1,15 @@
-import translations, { defaultLanguage as defaultLang, rawTranslations } from '../../../example/src/config/locales/translations';
-
-function routeLanguageSwitcher(route, currentLanguage = defaultLang, newLanguage = defaultLang) {
+function routeLanguageSwitcher(route, translations, currentLanguage, newLanguage) {
   const reverseRoutes = {};
-  Object.keys(rawTranslations[currentLanguage].routes)
-    .forEach((key) => reverseRoutes[rawTranslations[currentLanguage].routes[key]] = key);
+  Object.keys(translations[currentLanguage])
+    .filter((translationKey) => translationKey.includes('routes'))
+    .forEach((key) => reverseRoutes[translations[currentLanguage][key]] = key);
 
   const translatedRoute = route.split('/').map((routePart) => {
     if (!reverseRoutes[routePart]) {
       return routePart;
     }
 
-    const translationPath = `routes.${reverseRoutes[routePart]}`;
+    const translationPath = reverseRoutes[routePart];
     const translatedRoutePart = translations[newLanguage][translationPath];
 
     if (!translatedRoutePart) {
@@ -23,10 +22,10 @@ function routeLanguageSwitcher(route, currentLanguage = defaultLang, newLanguage
   return `/${translatedRoute.filter(Boolean).join('/')}`;
 }
 
-function routeTranslator(route, language = defaultLang) {
+function translateRoute(route, t) {
   const translatedRoute = route.split('/').map((routePart) => {
     const translationPath = `routes.${routePart}`;
-    const translatedRoutePart = translations[language][translationPath];
+    const translatedRoutePart = t(translationPath);
 
     if (!translatedRoutePart || translatedRoutePart === translationPath) {
       return routePart;
@@ -39,4 +38,4 @@ function routeTranslator(route, language = defaultLang) {
 }
 
 export { routeLanguageSwitcher };
-export default routeTranslator;
+export default translateRoute;

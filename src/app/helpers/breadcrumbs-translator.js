@@ -1,8 +1,6 @@
-import translations, { defaultLanguage } from '../../../example/src/config/locales/translations';
-
-export default (breadcrumb, language = defaultLanguage) => {
+export default (breadcrumb, t) => {
   const breadcrumbPath = `breadcrumbs.${breadcrumb}`;
-  const translatedBreadcrumbPart = translations[language][breadcrumbPath];
+  const translatedBreadcrumbPart = t(breadcrumbPath);
 
   if (!translatedBreadcrumbPart || translatedBreadcrumbPart === breadcrumbPath) {
     return breadcrumb;

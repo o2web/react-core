@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import { setLanguage } from 'redux-i18n';
-import { availableLanguages, defaultLanguage } from '../../../example/src/config/locales/translations';
-import PrimaryLayout from '../../../example/src/app/components/layouts/PrimaryLayout';
 import CrumbRoute from './router/CrumbRoute';
 
 class BaseRoute extends Component {
@@ -17,7 +14,8 @@ class BaseRoute extends Component {
   }
 
   setLanguageFromUrl({ pathname }) {
-    const { history, cookies, dispatch, lang } = this.props;
+    const { history, dispatch, lang } = this.props;
+    const { cookies, availableLanguages, defaultLanguage } = this.context;
     const language = pathname.split('/').filter(Boolean)[0];
     const isAvailableLanguage = availableLanguages.includes(language);
 
@@ -31,8 +29,9 @@ class BaseRoute extends Component {
   }
 
   render() {
+    const { component } = this.props;
     return (
-      <CrumbRoute path="/en" title="home" component={PrimaryLayout} />
+      <CrumbRoute path="/en" title="home" component={component} />
     );
   }
 }
@@ -43,12 +42,18 @@ function mapStateToProps(state) {
   };
 }
 
+BaseRoute.contextTypes = {
+  availableLanguages: PropTypes.array,
+  defaultLanguage: PropTypes.string,
+  cookies: PropTypes.object,
+};
+
 BaseRoute.propTypes = {
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   lang: PropTypes.string.isRequired,
-  cookies: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
+  component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
 };
 
-export default withRouter(connect(mapStateToProps)(withCookies(BaseRoute)));
+export default withRouter(connect(mapStateToProps)(BaseRoute));

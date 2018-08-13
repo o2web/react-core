@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withCookies } from 'react-cookie';
-import { availableLanguages } from '../../../../example/src/config/locales/translations';
 import { routeLanguageSwitcher } from '../../helpers/routes-translator';
 
 class LanguageSwitcher extends Component {
@@ -27,11 +25,15 @@ class LanguageSwitcher extends Component {
 
   setOtherLanguagesFromUrl({ pathname }) {
     const { lang } = this.props;
+    const { translations, availableLanguages } = this.context;
 
     this.setState({
       otherLanguages: availableLanguages
         .filter(language => language !== lang)
-        .map(language => ({ language, pathname: routeLanguageSwitcher(pathname, lang, language) })),
+        .map(language => ({
+          language,
+          pathname: routeLanguageSwitcher(pathname, translations, lang, language),
+        })),
     });
   }
 
@@ -62,6 +64,9 @@ function mapStateToProps(state) {
 
 LanguageSwitcher.contextTypes = {
   t: PropTypes.func,
+  translations: PropTypes.object.isRequired,
+  availableLanguages: PropTypes.array.isRequired,
+  defaultLanguage: PropTypes.string.isRequired,
 };
 
 LanguageSwitcher.defaultProps = {
@@ -71,8 +76,7 @@ LanguageSwitcher.defaultProps = {
 LanguageSwitcher.propTypes = {
   className: PropTypes.string,
   location: PropTypes.object.isRequired,
-  // history: PropTypes.object.isRequired,
   lang: PropTypes.string.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps)(withCookies(LanguageSwitcher)));
+export default withRouter(connect(mapStateToProps)(LanguageSwitcher));

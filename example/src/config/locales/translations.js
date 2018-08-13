@@ -7,7 +7,6 @@ const translations = {
   en: parse(en),
 };
 
-export const rawTranslations = { fr, en };
 export const defaultLanguage = 'fr';
 export const availableLanguages = Object.keys(translations);
 

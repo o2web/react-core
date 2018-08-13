@@ -6,14 +6,14 @@ import { Route, withRouter } from 'react-router-dom';
 import translateRoute from '../../helpers/routes-translator';
 import translateBreadcrumb from '../../helpers/breadcrumbs-translator';
 
-function CrumbRoute({ component: Component, path, title, render, lang, ...props }) {
+function CrumbRoute({ component: Component, path, title, render, ...props }, { t }) {
   return (
     <Route
       {...props}
-      path={translateRoute(path, lang)}
+      path={translateRoute(path, t)}
       render={(routeProps) => (
         <Breadcrumb data={{
-          title: translateBreadcrumb(title, lang),
+          title: translateBreadcrumb(title, t),
           pathname: routeProps.match.url,
         }}
         >
@@ -27,6 +27,10 @@ function CrumbRoute({ component: Component, path, title, render, lang, ...props 
     />
   );
 }
+
+CrumbRoute.contextTypes = {
+  t: PropTypes.func,
+};
 
 CrumbRoute.defaultProps = {
   component: false,

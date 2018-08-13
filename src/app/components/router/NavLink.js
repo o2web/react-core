@@ -1,28 +1,24 @@
 // libs
 import React from 'react';
-import Proptypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // components
 import { NavLink, withRouter } from 'react-router-dom';
 import translateRoute from '../../helpers/routes-translator';
 
-function TranslatedNavLink({ to, children, lang }) {
+function TranslatedNavLink({ to, children }, { t }) {
   return (
-    <NavLink to={translateRoute(to, lang)}>{children}</NavLink>
+    <NavLink to={translateRoute(to, t)}>{children}</NavLink>
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    lang: state.i18nState.lang,
-  };
-}
-
-TranslatedNavLink.propTypes = {
-  to: Proptypes.string.isRequired,
-  children: Proptypes.node.isRequired,
-  lang: Proptypes.string.isRequired,
+TranslatedNavLink.contextTypes = {
+  t: PropTypes.func,
 };
 
-export default withRouter(connect(mapStateToProps)(TranslatedNavLink));
+TranslatedNavLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default withRouter(TranslatedNavLink);

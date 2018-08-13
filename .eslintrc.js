@@ -1,7 +1,7 @@
 module.exports = {
   "extends": ["react-app", "airbnb"],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": ['off', { "extensions": [".js", ".jsx"] }],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": "off",
     "import/no-extraneous-dependencies": "off",
