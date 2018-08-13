@@ -83,7 +83,8 @@
     "redux-action-creator": "^2.3.0",
     "redux-form": "^7.4.2",
     "redux-i18n": "^1.5.13",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "node-sass": "^4.9.3"
   },
   "files": [
     "dist"
