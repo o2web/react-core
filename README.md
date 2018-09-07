@@ -34,6 +34,12 @@ Example in `/example`
 
 This package uses [Apollo Client](https://github.com/apollographql/apollo-client) as GraphQL client.
 
+Duplicate `.env.sample` file and add GraphQL endpoint
+
+```js
+REACT_APP_API_URL=https://example.com/graphql
+```
+
 Check `/example/src/app/actions/artworks` directory for GraphQL queries definition examples
 
 ```js
@@ -256,7 +262,7 @@ as React/JSX style guide
 
 Not implemented yet
 
-## Maintainer Notes
+## Development
 
 Start package core
 
@@ -273,6 +279,8 @@ cd /example
 npm install
 npm start
 ```
+
+Package created with [create-react-library](https://github.com/transitive-bullshit/create-react-library)
 
 ## License
 
