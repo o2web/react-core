@@ -1,11 +1,10 @@
 import gql from 'graphql-tag';
 import client from './client';
-import store from '../../../example/src/config/redux/store';
 
 const success = 'SUCCESS';
 const fail = 'FAIL';
 
-export function asyncQuery(type, query, params = {}) {
+export function asyncQuery(store, type, query, params = {}) {
   return (dispatch) => {
     dispatch({ type });
 
@@ -31,7 +30,7 @@ export function asyncQuery(type, query, params = {}) {
   };
 }
 
-export function asyncMutation(type, mutation, params = {}) {
+export function asyncMutation(store, type, mutation, params = {}) {
   return (dispatch) => {
     dispatch({ type });
 
