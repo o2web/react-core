@@ -1,14 +1,15 @@
 import gql from 'graphql-tag';
-import client from './client';
+import baseClient from './client';
 
 const success = 'SUCCESS';
 const fail = 'FAIL';
 
-export function asyncQuery(store, type, query, params = {}) {
+export function asyncQuery(store, type, query, params = {}, customClient = null) {
   return (dispatch) => {
     dispatch({ type });
 
     const locale = { locale: store.getState().i18nState.lang };
+    const client = customClient || baseClient;
 
     return client.query({
       query: gql(query),
@@ -30,11 +31,12 @@ export function asyncQuery(store, type, query, params = {}) {
   };
 }
 
-export function asyncMutation(store, type, mutation, params = {}) {
+export function asyncMutation(store, type, mutation, params = {}, customClient = null) {
   return (dispatch) => {
     dispatch({ type });
 
     const locale = { locale: store.getState().i18nState.lang };
+    const client = customClient || baseClient;
 
     return client.query({
       mutation: gql(mutation),
