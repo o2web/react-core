@@ -13,7 +13,7 @@ npm install --save o2web-react-core
 
 ## Usage
 
-Available components and methods
+### Available components and methods
 
 ```js
 // using ES6 modules
@@ -253,14 +253,15 @@ This package uses [redux-cookie](https://github.com/reactivestack/cookies)
 
 `<CookiesProvider />` is defined in `/example/src/app/components/App.js` so `cookies` prop is available to children components
 
-### Javascript Linter
-
-This package uses [ESLint](https://github.com/eslint/eslint) with [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
-as React/JSX style guide
-
 ### Authentication
 
 Not implemented yet
+
+## Advanced usage
+
+### Add custom Apollo client
+
+You can add a custom Apollo client to further customize your app with advanced features. To do so, you need to create a custom client, import it in your action files and send it as a parameter to the async query object. You can find an example of this feature in the example folder (custom client in `example/src/config/graphql/custom-client.js` and usage in `example/src/app/actions/artworks/index.js`).
 
 ## Development
 
@@ -280,6 +281,12 @@ npm install
 npm start
 ```
 
+### Javascript Linting
+
+This package uses [ESLint](https://github.com/eslint/eslint) with [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+as React/JSX style guide
+
+----------------------------------------
 Package created with [create-react-library](https://github.com/transitive-bullshit/create-react-library)
 
 ## License
