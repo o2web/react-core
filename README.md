@@ -23,6 +23,7 @@ import {
   LanguageSwitcher,
   NavLink,
   Route,
+  translateRoute,
   asyncQuery,
   asyncMutation,
 } from 'o2web-react-core';
