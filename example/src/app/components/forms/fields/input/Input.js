@@ -18,7 +18,7 @@ const Input = (field, { t }) => (
         placeholder={field.placeholder}
       />
     </label>
-    {field.meta.touched && field.meta.error && !field.meta.disabled && <span className="field__error">{field.meta.error}</span>}
+    {field.meta.touched && field.meta.error && !field.meta.disabled && <span className="field__error">{t(`form.${field.meta.error}`)}</span>}
   </div>
 );
 

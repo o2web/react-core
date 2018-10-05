@@ -9,6 +9,11 @@ import AboutPage from '../pages/About';
 import Artwork from '../artworks/Artwork';
 import Artworks from '../artworks/Artworks';
 import DemoForm from '../forms/Demo';
+import User from '../user/User';
+import ForgotPassword from '../user/forms/ForgotPassword';
+import CreateAccount from '../user/forms/CreateAccount';
+import EditPassword from '../user/forms/EditPassword';
+import NewPassword from '../user/forms/NewPassword';
 
 // assets
 import logo from '../../../assets/images/logo.svg';
@@ -36,7 +41,22 @@ function PrimaryLayout() {
             </Switch>
           }
         />
+
         <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
+
+        <CrumbRoute
+          path="/en/account"
+          title="account"
+          render={({ match, path }) =>
+            <div>
+              <Route exact path={match.url} component={User} />
+              <CrumbRoute path={`${path}/createAccount`} title="createAccount" component={CreateAccount} />
+              <CrumbRoute path={`${path}/editPassword`} title="editPassword" component={EditPassword} />
+              <CrumbRoute path={`${path}/forgotPassword`} title="forgotPassword" component={ForgotPassword} />
+              <CrumbRoute path={`${path}/newPassword`} title="newPassword" component={NewPassword} />
+            </div>
+          }
+        />
       </main>
     </div>
   );

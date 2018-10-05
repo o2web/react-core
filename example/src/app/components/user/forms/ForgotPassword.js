@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { translateRoute } from 'o2web-react-core';
 import Input from '../../forms/fields/input/Input';
 import validate from '../../forms/validate/validate';
-import translateRoute from '../../../helpers/routes-translator';
 
 // Styles
 import './styles.scss';

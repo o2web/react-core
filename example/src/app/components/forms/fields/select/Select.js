@@ -11,7 +11,7 @@ const Select = (field, { t }) => (
     <select {...field.input} disabled={field.disabled} className="field__select">
       {field.children}
     </select>
-    {field.meta.touched && field.meta.error && !field.meta.disabled && <span className="field__error">{field.meta.error}</span>}
+    {field.meta.touched && field.meta.error && !field.meta.disabled && <span className="field__error">{t(`form.${field.meta.error}`)}</span>}
   </div>
 );
 

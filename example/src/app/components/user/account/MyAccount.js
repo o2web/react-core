@@ -19,7 +19,6 @@ class MyAccount extends Component {
     history: PropTypes.object.isRequired,
     logoutUser: PropTypes.func.isRequired,
     authenticated: PropTypes.bool.isRequired,
-    id: PropTypes.number.isRequired,
     email: PropTypes.string.isRequired,
   };
   static contextTypes = {
@@ -46,19 +45,15 @@ class MyAccount extends Component {
 
   render() {
     const { t } = this.context;
-    const { id, email } = this.props;
+    const { email } = this.props;
     const userName = email.split('@').join('\u200b@');
 
     return (
       <section className="my-account section section--lined-background">
         <div className="wrapper wrapper--narrow">
-          <h1 className="page__title my-account__name" watermark={t('pages.account.title')}>
+          <h1 className="page__title my-account__name">
             {userName}
           </h1>
-
-          <div className="my-account__favorites">
-            <NavLink to={`en/favorites/${id}`}>{t('pages.account.goToFavorites')}</NavLink>
-          </div>
 
           <div className="my-account__info">
             <h2 className="section__subtitle">{t('pages.account.userInfo')}</h2>

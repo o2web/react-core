@@ -28,7 +28,7 @@ class CreateAccountForm extends Component {
 
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
-          <h1 className="page__title" watermark={t('pages.createAccount.title')}>
+          <h1 className="page__title">
             {t('pages.createAccount.title')}
           </h1>
 

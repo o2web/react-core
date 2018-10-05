@@ -21,6 +21,9 @@ function NavLayout(props, { t }) {
         <li>
           <NavLink to="/en/demo">{t('nav.form_demo')}</NavLink>
         </li>
+        <li>
+          <NavLink to="/en/account">{t('nav.account')}</NavLink>
+        </li>
       </ul>
     </nav>
   );
