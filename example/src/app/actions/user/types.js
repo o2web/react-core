@@ -4,5 +4,6 @@ export default createTypes([
   ...async('SIGN_IN'),
   ...async('SIGN_UP'),
   ...async('VALIDATE_TOKEN'),
-  'LOGOUT',
+  'VALIDATE_NO_TOKEN',
+  'SIGN_OUT',
 ], 'USER');

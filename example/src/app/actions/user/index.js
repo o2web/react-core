@@ -19,6 +19,12 @@ export default {
     variables,
     client,
   ),
+  signOut: () => {
+    localStorage.removeItem('token');
+    return {
+      type: types.SIGN_OUT,
+    };
+  },
   validateToken: (variables) => asyncMutation(
     store,
     types.VALIDATE_TOKEN,
@@ -31,7 +37,7 @@ export default {
       }
     },
   ),
-  logout: () => ({
-    type: types.USER_LOGOUT,
+  validateNoToken: () => ({
+    type: types.VALIDATE_NO_TOKEN,
   }),
 };

@@ -15,7 +15,9 @@ import './config/polyfills/polyfills';
 const token = localStorage.getItem('token');
 
 if (token) {
-  store.dispatch(actions.validateToken(store.dispatch));
+  store.dispatch(actions.validateToken());
+} else {
+  store.dispatch(actions.validateNoToken());
 }
 
 ReactDOM.render(

@@ -15,7 +15,7 @@ import ForgotPassword from '../user/forms/ForgotPassword';
 import CreateAccount from '../user/forms/SignUp';
 import EditPassword from '../user/forms/EditPassword';
 import NewPassword from '../user/forms/NewPassword';
-import AuthenticatedComponent from '../utility/AuthenticatedComponent';
+import AuthenticatedComponent from '../auth/AuthenticatedComponent';
 
 // assets
 import logo from '../../../assets/images/logo.svg';
@@ -46,25 +46,21 @@ function PrimaryLayout() {
 
         <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
 
-        <AuthenticatedComponent authRequired={false}>
-          <CrumbRoute path="/en/login" title="login" component={Login} />
-          <CrumbRoute path="/en/createAccount" title="createAccount" component={CreateAccount} />
-          <CrumbRoute path="/en/forgotPassword" title="forgotPassword" component={ForgotPassword} />
-          <CrumbRoute path="/en/newPassword" title="newPassword" component={NewPassword} />
-        </AuthenticatedComponent>
+        <CrumbRoute exact path="/en/login" title="login" component={AuthenticatedComponent(Login, false)} />
+        <CrumbRoute exact path="/en/createAccount" title="createAccount" component={AuthenticatedComponent(CreateAccount, false)} />
+        <CrumbRoute exact path="/en/forgotPassword" title="forgotPassword" component={AuthenticatedComponent(ForgotPassword, false)} />
+        <CrumbRoute exact path="/en/newPassword" title="newPassword" component={AuthenticatedComponent(NewPassword, false)} />
 
-        <AuthenticatedComponent authRequired>
-          <CrumbRoute
-            path="/en/account"
-            title="account"
-            render={({ match, path }) =>
-              <div>
-                <Route exact path={match.url} component={MyAccount} />
-                <CrumbRoute path={`${path}/editPassword`} title="editPassword" component={EditPassword} />
-              </div>
-            }
-          />
-        </AuthenticatedComponent>
+        <CrumbRoute
+          path="/en/account"
+          title="account"
+          render={({ match, path }) =>
+            <div>
+              <Route exact path={match.url} component={AuthenticatedComponent(MyAccount)} />
+              <CrumbRoute path={`${path}/editPassword`} title="editPassword" component={AuthenticatedComponent(EditPassword)} />
+            </div>
+          }
+        />
       </main>
     </div>
   );

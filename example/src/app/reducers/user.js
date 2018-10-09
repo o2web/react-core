@@ -1,7 +1,7 @@
 import types from '../actions/user/types';
 
 const initialState = {
-  validatingToken: false,
+  validatingToken: true,
   loading: false,
   authenticated: false,
   data: {},
@@ -20,7 +20,9 @@ export default function (state = initialState, action) {
         authenticated: action.payload.validateToken.valid,
       };
     case types.VALIDATE_TOKEN_FAIL:
-      return { ...state, data: {}, authenticated: false };
+      return { ...state, data: {}, authenticated: false, validatingToken: false };
+    case types.VALIDATE_NO_TOKEN:
+      return { ...state, validatingToken: false };
     case types.SIGN_IN:
       window.console.log('SIGN_IN');
       return { ...state, loading: true };
@@ -34,6 +36,8 @@ export default function (state = initialState, action) {
     case types.SIGN_UP_SUCCESS:
       return { ...state, data: action.payload.signUp.user, authenticated: true };
     case types.SIGN_UP_FAIL:
+      return { ...state, data: {}, authenticated: false };
+    case types.SIGN_OUT:
       return { ...state, data: {}, authenticated: false };
     default:
   }
