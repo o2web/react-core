@@ -1,8 +1,7 @@
-import { asyncMutation } from 'o2web-react-core';
+import { asyncMutation, graphQLClient } from 'o2web-react-core';
 import queries from './queries';
 import types from './types';
 import store from '../../../config/redux/store';
-import client from '../../../config/graphql/custom-client';
 
 export default {
   signIn: (variables) => asyncMutation(
@@ -10,14 +9,14 @@ export default {
     types.SIGN_IN,
     queries.signIn,
     variables,
-    client,
+    graphQLClient,
   ),
   signUp: (variables) => asyncMutation(
     store,
     types.SIGN_UP,
     queries.signUp,
     variables,
-    client,
+    graphQLClient,
   ),
   signOut: () => {
     localStorage.removeItem('token');
@@ -30,7 +29,7 @@ export default {
     types.VALIDATE_TOKEN,
     queries.validateToken,
     variables,
-    client,
+    graphQLClient,
     (data) => {
       if (!data.validateToken.valid) {
         localStorage.removeItem('token');
