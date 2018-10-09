@@ -111,4 +111,4 @@ export default connect(mapStateToProps)(reduxForm({
   form: 'demo',
   enableReinitialize: true,
   validate,
-}, mapStateToProps)(DemoForm));
+})(DemoForm));

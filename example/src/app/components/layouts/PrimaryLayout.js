@@ -9,11 +9,13 @@ import AboutPage from '../pages/About';
 import Artwork from '../artworks/Artwork';
 import Artworks from '../artworks/Artworks';
 import DemoForm from '../forms/Demo';
-import User from '../user/User';
+import Login from '../user/forms/SignIn';
+import MyAccount from '../user/account/MyAccount';
 import ForgotPassword from '../user/forms/ForgotPassword';
-import CreateAccount from '../user/forms/CreateAccount';
+import CreateAccount from '../user/forms/SignUp';
 import EditPassword from '../user/forms/EditPassword';
 import NewPassword from '../user/forms/NewPassword';
+import AuthenticatedComponent from '../utility/AuthenticatedComponent';
 
 // assets
 import logo from '../../../assets/images/logo.svg';
@@ -34,29 +36,35 @@ function PrimaryLayout() {
         <CrumbRoute
           path="/en/artworks"
           title="artworks"
-          render={({ match }) =>
+          render={({ match, path }) =>
             <Switch>
               <Route exact path={match.url} component={Artworks} />
-              <CrumbRoute path={`${match.url}/:artworkId`} title="artwork" component={Artwork} />
+              <CrumbRoute path={`${path}/:artworkId`} title="artwork" component={Artwork} />
             </Switch>
           }
         />
 
         <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
 
-        <CrumbRoute
-          path="/en/account"
-          title="account"
-          render={({ match, path }) =>
-            <div>
-              <Route exact path={match.url} component={User} />
-              <CrumbRoute path={`${path}/createAccount`} title="createAccount" component={CreateAccount} />
-              <CrumbRoute path={`${path}/editPassword`} title="editPassword" component={EditPassword} />
-              <CrumbRoute path={`${path}/forgotPassword`} title="forgotPassword" component={ForgotPassword} />
-              <CrumbRoute path={`${path}/newPassword`} title="newPassword" component={NewPassword} />
-            </div>
-          }
-        />
+        <AuthenticatedComponent authRequired={false}>
+          <CrumbRoute path="/en/login" title="login" component={Login} />
+          <CrumbRoute path="/en/createAccount" title="createAccount" component={CreateAccount} />
+          <CrumbRoute path="/en/forgotPassword" title="forgotPassword" component={ForgotPassword} />
+          <CrumbRoute path="/en/newPassword" title="newPassword" component={NewPassword} />
+        </AuthenticatedComponent>
+
+        <AuthenticatedComponent authRequired>
+          <CrumbRoute
+            path="/en/account"
+            title="account"
+            render={({ match, path }) =>
+              <div>
+                <Route exact path={match.url} component={MyAccount} />
+                <CrumbRoute path={`${path}/editPassword`} title="editPassword" component={EditPassword} />
+              </div>
+            }
+          />
+        </AuthenticatedComponent>
       </main>
     </div>
   );

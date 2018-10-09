@@ -1,39 +1,40 @@
 import types from '../actions/user/types';
 
 const initialState = {
+  validatingToken: false,
   loading: false,
   authenticated: false,
-  id: 0,
-  email: '',
+  data: {},
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case types.GET_CURRENT_USER:
+    case types.VALIDATE_TOKEN:
+      window.console.log('VALIDATE_TOKEN');
+      return { ...state, validatingToken: true };
+    case types.VALIDATE_TOKEN_SUCCESS:
+      return {
+        ...state,
+        data: action.payload.validateToken.user,
+        validatingToken: false,
+        authenticated: action.payload.validateToken.valid,
+      };
+    case types.VALIDATE_TOKEN_FAIL:
+      return { ...state, data: {}, authenticated: false };
+    case types.SIGN_IN:
+      window.console.log('SIGN_IN');
       return { ...state, loading: true };
-    case types.GET_CURRENT_USER_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        authenticated: action.payload.authenticated,
-        userProfile: action.payload.userProfile,
-      };
-    case types.GET_CURRENT_USER_FAIL:
-      return { ...state, loading: false, authenticated: false };
-    case types.AUTHENTICATE_USER:
-      return {
-        ...state,
-        authenticated: true,
-        id: 1,
-        email: 'mr.untel@globetrotter.net',
-      };
-    case types.LOGOUT_USER:
-      return {
-        ...state,
-        authenticated: false,
-        id: 0,
-        email: '',
-      };
+    case types.SIGN_IN_SUCCESS:
+      return { ...state, data: action.payload.signIn.user, authenticated: true };
+    case types.SIGN_IN_FAIL:
+      return { ...state, data: {}, authenticated: false };
+    case types.SIGN_UP:
+      window.console.log('SIGN_UP');
+      return { ...state, loading: true };
+    case types.SIGN_UP_SUCCESS:
+      return { ...state, data: action.payload.signUp.user, authenticated: true };
+    case types.SIGN_UP_FAIL:
+      return { ...state, data: {}, authenticated: false };
     default:
   }
 

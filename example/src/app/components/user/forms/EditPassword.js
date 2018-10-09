@@ -25,7 +25,6 @@ class EditPasswordForm extends Component {
     const submitForm = handleSubmit(EditPasswordForm.handleFormSubmit);
 
     return (
-
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
           <h1 className="page__title" watermark={t('pages.editPassword.title')}>
@@ -79,4 +78,4 @@ export default connect(mapStateToProps)(reduxForm({
   form: 'editPassword',
   enableReinitialize: true,
   validate,
-}, mapStateToProps)(EditPasswordForm));
+})(EditPasswordForm));

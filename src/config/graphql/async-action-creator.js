@@ -1,27 +1,39 @@
 import gql from 'graphql-tag';
+import { stopSubmit } from 'redux-form';
 import baseClient from './client';
 
 const success = 'SUCCESS';
 const fail = 'FAIL';
 
-export function asyncQuery(store, type, query, params = {}, customClient = null) {
+export function asyncQuery(
+  store,
+  type,
+  query,
+  params = {},
+  customClient = null,
+  then = () => {},
+) {
   return (dispatch) => {
     dispatch({ type });
 
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    return client.query({
+    client.query({
       query: gql(query),
       fetchPolicy: 'network-only',
       errorPolicy: 'all',
       variables: { ...locale, ...params },
     })
       .then((response) => {
-        if (!response.errors) {
-          dispatch({ type: `${type}_${success}`, payload: response.data });
-        } else {
-          dispatch({ type: `${type}_${fail}` });
+        const payload = response.data;
+        const data = Object.values(payload)[0] || {};
+
+        const responseType = response.errors || data.errors ? fail : success;
+        dispatch({ type: `${type}_${responseType}`, payload });
+
+        if (responseType === success) {
+          then(payload);
         }
       })
       .catch((errors) => {
@@ -31,23 +43,42 @@ export function asyncQuery(store, type, query, params = {}, customClient = null)
   };
 }
 
-export function asyncMutation(store, type, mutation, params = {}, customClient = null) {
+export function asyncMutation(
+  store,
+  type,
+  mutation,
+  params = {},
+  customClient = null,
+  then = () => {},
+) {
   return (dispatch) => {
     dispatch({ type });
 
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    return client.query({
+    client.mutate({
       mutation: gql(mutation),
-      fetchPolicy: 'network-only',
+      fetchPolicy: 'no-cache',
       variables: { ...locale, ...params },
     })
       .then((response) => {
-        if (!response.errors) {
-          dispatch({ type: `${type}_${success}`, payload: response.data });
-        } else {
-          dispatch({ type: `${type}_${fail}` });
+        const payload = response.data;
+        const data = Object.values(payload)[0] || {};
+
+        const responseType = response.errors || data.errors ? fail : success;
+        dispatch({ type: `${type}_${responseType}`, payload });
+
+        if (data.errors instanceof Object) {
+          const errors = data.errors.reduce(
+            (obj, { field, message }) => ({ ...obj, [field]: message }), {},
+          );
+
+          dispatch(stopSubmit(Object.keys(payload)[0], errors));
+        }
+
+        if (responseType === success) {
+          then(payload);
         }
       })
       .catch((errors) => {

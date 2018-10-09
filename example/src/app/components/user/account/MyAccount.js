@@ -32,7 +32,7 @@ class MyAccount extends Component {
     window.scrollTo(0, 0);
     // logout if not authenticated
     if (!authenticated) {
-      history.push(translateRoute('/fr/mon-compte', t));
+      history.push(translateRoute('/en/login', t));
     }
   }
 

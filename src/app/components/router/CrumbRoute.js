@@ -20,7 +20,7 @@ function CrumbRoute({ component: Component, path, title, render, ...props }, { t
           {Component ?
             <Component {...routeProps} />
             :
-            render({...routeProps, path})
+            render({ ...routeProps, path })
           }
         </Breadcrumb>
       )}

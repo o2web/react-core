@@ -1,21 +1,37 @@
-import { asyncQuery } from 'o2web-react-core';
+import { asyncMutation } from 'o2web-react-core';
 import queries from './queries';
 import types from './types';
 import store from '../../../config/redux/store';
 import client from '../../../config/graphql/custom-client';
 
 export default {
-  getCurrentUser: (variables) => asyncQuery(
+  signIn: (variables) => asyncMutation(
     store,
-    types.GET_CURRENT_USER,
-    queries.getCurrentUser,
+    types.SIGN_IN,
+    queries.signIn,
     variables,
     client,
   ),
-  authenticateUser: () => ({
-    type: types.AUTHENTICATE_USER,
-  }),
-  logoutUser: () => ({
-    type: types.LOGOUT_USER,
+  signUp: (variables) => asyncMutation(
+    store,
+    types.SIGN_UP,
+    queries.signUp,
+    variables,
+    client,
+  ),
+  validateToken: (variables) => asyncMutation(
+    store,
+    types.VALIDATE_TOKEN,
+    queries.validateToken,
+    variables,
+    client,
+    (data) => {
+      if (!data.validateToken.valid) {
+        localStorage.removeItem('token');
+      }
+    },
+  ),
+  logout: () => ({
+    type: types.USER_LOGOUT,
   }),
 };

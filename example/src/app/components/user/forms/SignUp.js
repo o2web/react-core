@@ -3,29 +3,48 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { NavLink } from 'o2web-react-core';
 import Input from '../../forms/fields/input/Input';
 import validate from '../../forms/validate/validate';
+
+import actions from '../../../actions/user/';
 
 // Styles
 import './styles.scss';
 
-
-// Login Form
-class CreateAccountForm extends Component {
+class SignUpForm extends Component {
   static contextTypes = {
     t: PropTypes.func,
   };
-  static handleFormSubmit(values) {
-    alert(JSON.stringify(values, null, 4));
+
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    pristine: PropTypes.bool.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    signUp: PropTypes.func.isRequired,
+    error: PropTypes.string,
+  };
+
+  static defaultProps = {
+    error: '',
+  };
+
+  constructor() {
+    super();
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  handleFormSubmit(values) {
+    const { signUp } = this.props;
+    signUp(values);
   }
 
   render() {
     const { t } = this.context;
-    const { handleSubmit, pristine, submitting } = this.props;
-    const submitForm = handleSubmit(CreateAccountForm.handleFormSubmit);
+    const { handleSubmit, pristine, submitting, error } = this.props;
+    const submitForm = handleSubmit(this.handleFormSubmit);
 
     return (
-
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
           <h1 className="page__title">
@@ -33,6 +52,7 @@ class CreateAccountForm extends Component {
           </h1>
 
           <form onSubmit={submitForm} className="form form--login">
+            {error && <div className="form-error">{error}</div>}
             <Field
               name="email"
               component={Input}
@@ -46,7 +66,7 @@ class CreateAccountForm extends Component {
               label="password"
             />
             <Field
-              name="confirmPassword"
+              name="passwordConfirmation"
               component={Input}
               type="password"
               label="confirmPassword"
@@ -57,17 +77,14 @@ class CreateAccountForm extends Component {
               </button>
             </div>
           </form>
+          <NavLink to="en/login">
+            {t('pages.login.submit')}
+          </NavLink>
         </div>
       </section>
     );
   }
 }
-
-CreateAccountForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-};
 
 function mapStateToProps() {
   return {
@@ -75,8 +92,8 @@ function mapStateToProps() {
   };
 }
 
-export default connect(mapStateToProps)(reduxForm({
-  form: 'createAccount',
+export default connect(mapStateToProps, actions)(reduxForm({
+  form: 'signUp',
   enableReinitialize: true,
   validate,
-}, mapStateToProps)(CreateAccountForm));
+})(SignUpForm));

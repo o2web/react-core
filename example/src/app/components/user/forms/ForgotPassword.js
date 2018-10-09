@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { translateRoute } from 'o2web-react-core';
+import { NavLink, translateRoute } from 'o2web-react-core';
 import Input from '../../forms/fields/input/Input';
 import validate from '../../forms/validate/validate';
 
@@ -42,7 +42,6 @@ class ForgotPasswordForm extends Component {
     const submitForm = handleSubmit(this.handleFormSubmit);
 
     return (
-
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
           <h1 className="page__title" watermark={t('pages.login.title')}>
@@ -67,6 +66,9 @@ class ForgotPasswordForm extends Component {
             {t('pages.forgotPassword.text')}
           </p>
 
+          <NavLink to="en/login">
+            {t('pages.login.submit')}
+          </NavLink>
         </div>
       </section>
     );
@@ -89,4 +91,4 @@ export default withRouter(connect(mapStateToProps)(reduxForm({
   form: 'forgotPassword',
   enableReinitialize: true,
   validate,
-}, mapStateToProps)(ForgotPasswordForm)));
+})(ForgotPasswordForm)));

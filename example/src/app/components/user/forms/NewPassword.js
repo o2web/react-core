@@ -25,7 +25,6 @@ class NewPasswordForm extends Component {
     const submitForm = handleSubmit(NewPasswordForm.handleFormSubmit);
 
     return (
-
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
           <h1 className="page__title" watermark={t('pages.newPassword.title')}>

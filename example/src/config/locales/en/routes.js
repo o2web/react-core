@@ -4,6 +4,7 @@ export default {
   artworks: 'artworks',
   demo: 'demo-form',
   account: 'my-account',
+  login: 'login',
   createAccount: 'account-creation',
   forgotPassword: 'forgot-password',
   editPassword: 'edit-password',
