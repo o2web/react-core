@@ -3,26 +3,50 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { translateRoute } from 'o2web-react-core';
 import Input from '../../forms/fields/input/Input';
 import validate from '../../forms/validate/validate';
+
+import actions from '../../../actions/user/';
 
 // Styles
 import './styles.scss';
 
+class EditAccountForm extends Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    pristine: PropTypes.bool.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    updateAccount: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+  };
 
-// Edit Password Form
-class EditPasswordForm extends Component {
   static contextTypes = {
     t: PropTypes.func,
   };
-  static handleFormSubmit(values) {
-    alert(JSON.stringify(values, null, 4));
+
+  constructor() {
+    super();
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  handleFormSubmit(values) {
+    const { updateAccount, history } = this.props;
+    const { t } = this.context;
+
+    updateAccount(values).then((data) => {
+      if (data && data.updateAccount.user) {
+        history.push(translateRoute('/en/account', t));
+      }
+    });
   }
 
   render() {
-    const { t } = this.context;
     const { handleSubmit, pristine, submitting } = this.props;
-    const submitForm = handleSubmit(EditPasswordForm.handleFormSubmit);
+    const { t } = this.context;
+
+    const submitForm = handleSubmit(this.handleFormSubmit);
 
     return (
       <section className="section section--lined-background">
@@ -33,19 +57,19 @@ class EditPasswordForm extends Component {
 
           <form onSubmit={submitForm} className="form form--login">
             <Field
-              name="oldPassword"
+              name="currentPassword"
               component={Input}
               type="password"
               label="oldPassword"
             />
             <Field
-              name="newPassword"
+              name="password"
               component={Input}
               type="password"
               label="newPassword"
             />
             <Field
-              name="confirmNewPassword"
+              name="passwordConfirmation"
               component={Input}
               type="password"
               label="confirmPassword"
@@ -62,7 +86,7 @@ class EditPasswordForm extends Component {
   }
 }
 
-EditPasswordForm.propTypes = {
+EditAccountForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -74,8 +98,8 @@ function mapStateToProps() {
   };
 }
 
-export default connect(mapStateToProps)(reduxForm({
-  form: 'editPassword',
+export default withRouter(connect(mapStateToProps, actions)(reduxForm({
+  form: 'updateAccount',
   enableReinitialize: true,
   validate,
-})(EditPasswordForm));
+})(EditAccountForm)));

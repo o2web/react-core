@@ -9,7 +9,7 @@ export default {
     title: 'My Account',
     goToFavorites: 'View your favorites',
     userInfo: 'Account Info',
-    changePassword: 'Edit your password',
+    editAccount: 'Edit your account information',
     logout: 'Déconnexion',
   },
   login: {
@@ -28,6 +28,7 @@ export default {
     title: 'Forgot your Password?',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     submit: 'Get a reset password link',
+    instructionsSent: 'Password reset instructions have been sent to the email address'
   },
   editPassword: {
     title: 'Edit your password',
@@ -36,6 +37,7 @@ export default {
   newPassword: {
     title: 'New password',
     submit: 'Save password',
+    passwordWasReset: 'The password has been reset',
   },
 
 };

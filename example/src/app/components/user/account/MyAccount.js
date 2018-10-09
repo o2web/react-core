@@ -33,8 +33,8 @@ function MyAccount({ email, signOut }, { t }) {
 
           <div className="my-account__actions">
             <div className="my-account__action my-account__action--change-password">
-              <NavLink to="en/account/editPassword">
-                {t('pages.account.changePassword')}
+              <NavLink to="en/account/editAccount">
+                {t('pages.account.editAccount')}
               </NavLink>
             </div>
             <div className="my-account__action my-account__action--logout">

@@ -15,7 +15,9 @@ import './config/polyfills/polyfills';
 const token = localStorage.getItem('token');
 
 if (token) {
-  store.dispatch(actions.validateToken());
+  store.dispatch(actions.validateToken()).then((data) => {
+    if (!data || !data.validateToken.valid) localStorage.removeItem('token');
+  });
 } else {
   store.dispatch(actions.validateNoToken());
 }

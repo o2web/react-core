@@ -7,6 +7,6 @@ export default {
   login: 'connexion',
   createAccount: 'creation-de-compte',
   forgotPassword: 'mot-de-passe-oublie',
-  editPassword: 'modifier-mot-de-passe',
-  newPassword: 'nouveau-mot-de-passe',
+  resetPassword: 'nouveau-mot-de-passe',
+  editAccount: 'modifier-compte',
 };

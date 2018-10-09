@@ -25,6 +25,37 @@ export default {
       }
     }
   `,
+  forgotPassword: `
+    mutation($email: String!) {
+      forgotPassword(email: $email) {
+        valid
+      }
+    }
+  `,
+  resetPassword: `
+    mutation($token: String!, $password: String!, $passwordConfirmation: String!) {
+      resetPassword(resetPasswordToken: $token, password: $password, passwordConfirmation: $passwordConfirmation) {
+        valid
+        errors {
+          field
+          message
+        }
+      }
+    }
+  `,
+  updateAccount: `
+    mutation($currentPassword: String!, $password: String!, $passwordConfirmation: String!) {
+      updateAccount(currentPassword: $currentPassword, password: $password, passwordConfirmation: $passwordConfirmation) {
+        user {
+          email
+        }
+        errors {
+          field
+          message
+        }
+      }
+    }
+  `,
   validateToken: `
     mutation {
       validateToken {

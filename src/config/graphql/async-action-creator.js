@@ -11,7 +11,6 @@ export function asyncQuery(
   query,
   params = {},
   customClient = null,
-  then = () => {},
 ) {
   return (dispatch) => {
     dispatch({ type });
@@ -19,7 +18,7 @@ export function asyncQuery(
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    client.query({
+    return client.query({
       query: gql(query),
       fetchPolicy: 'network-only',
       errorPolicy: 'all',
@@ -32,9 +31,7 @@ export function asyncQuery(
         const responseType = response.errors || data.errors ? fail : success;
         dispatch({ type: `${type}_${responseType}`, payload });
 
-        if (responseType === success) {
-          then(payload);
-        }
+        return payload;
       })
       .catch((errors) => {
         dispatch({ type: `${type}_${fail}` });
@@ -49,7 +46,6 @@ export function asyncMutation(
   mutation,
   params = {},
   customClient = null,
-  then = () => {},
 ) {
   return (dispatch) => {
     dispatch({ type });
@@ -57,7 +53,7 @@ export function asyncMutation(
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    client.mutate({
+    return client.mutate({
       mutation: gql(mutation),
       fetchPolicy: 'no-cache',
       variables: { ...locale, ...params },
@@ -77,9 +73,7 @@ export function asyncMutation(
           dispatch(stopSubmit(Object.keys(payload)[0], errors));
         }
 
-        if (responseType === success) {
-          then(payload);
-        }
+        return payload;
       })
       .catch((errors) => {
         dispatch({ type: `${type}_${fail}` });

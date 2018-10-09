@@ -24,17 +24,33 @@ export default {
       type: types.SIGN_OUT,
     };
   },
+  updateAccount: (variables) => asyncMutation(
+    store,
+    types.UPDATE_ACCOUNT,
+    queries.updateAccount,
+    variables,
+    graphQLClient,
+  ),
+  resetPassword: (variables) => asyncMutation(
+    store,
+    types.RESET_PASSWORD,
+    queries.resetPassword,
+    variables,
+    graphQLClient,
+  ),
+  forgotPassword: (variables) => asyncMutation(
+    store,
+    types.FORGOT_PASSWORD,
+    queries.forgotPassword,
+    variables,
+    graphQLClient,
+  ),
   validateToken: (variables) => asyncMutation(
     store,
     types.VALIDATE_TOKEN,
     queries.validateToken,
     variables,
     graphQLClient,
-    (data) => {
-      if (!data.validateToken.valid) {
-        localStorage.removeItem('token');
-      }
-    },
   ),
   validateNoToken: () => ({
     type: types.VALIDATE_NO_TOKEN,

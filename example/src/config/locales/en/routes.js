@@ -7,6 +7,6 @@ export default {
   login: 'login',
   createAccount: 'account-creation',
   forgotPassword: 'forgot-password',
-  editPassword: 'edit-password',
-  newPassword: 'new-password',
+  resetPassword: 'new-password',
+  editAccount: 'edit-account',
 };
