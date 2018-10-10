@@ -69,6 +69,12 @@ export default {
 
 ```
 
+### Authentication
+
+This package is intended to authenticate with a GraphQL Authentication with JWT. You can use the gem `graphql-auth` if you are using rails for your api
+
+The authentication forms Components are located in `example/src/app/components/user
+
 ### Redux
 
 This package uses [Redux](https://github.com/reduxjs/redux) to manage data states
@@ -254,15 +260,11 @@ This package uses [redux-cookie](https://github.com/reactivestack/cookies)
 
 `<CookiesProvider />` is defined in `/example/src/app/components/App.js` so `cookies` prop is available to children components
 
-### Authentication
-
-Not implemented yet
-
 ## Advanced usage
 
 ### Add custom Apollo client
 
-You can add a custom Apollo client to further customize your app with advanced features. To do so, you need to create a custom client, import it in your action files and send it as a parameter to the async query object. You can find an example of this feature in the example folder (custom client in `example/src/config/graphql/custom-client.js` and usage in `example/src/app/actions/artworks/index.js`).
+You can add a custom Apollo client to further customize your app with advanced features. To do so, you need to create a custom client, import it in your action files and send it as a parameter to the async query object. You can find an example of this feature in the example folder (custom client in `example/src/config/graphql/client.js` and usage in `example/src/app/actions/artworks/index.js`).
 
 ## Development
 
