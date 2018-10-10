@@ -26,6 +26,7 @@ import {
   translateRoute,
   asyncQuery,
   asyncMutation,
+  graphQLClient,
 } from 'o2web-react-core';
 ```
 
