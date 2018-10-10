@@ -28,11 +28,11 @@ export default {
     title: 'Forgot your Password?',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     submit: 'Get a reset password link',
-    instructionsSent: 'Password reset instructions have been sent to the email address'
+    instructionsSent: 'Password reset instructions have been sent to the email address',
   },
-  editPassword: {
-    title: 'Edit your password',
-    submit: 'Save password',
+  editAccount: {
+    title: 'Edit your account information',
+    submit: 'Save your information',
   },
   newPassword: {
     title: 'New password',

@@ -28,11 +28,11 @@ export default {
     title: 'Mot de passe oublié?',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     submit: 'Obtenir un lien de réinitialisation',
-    instructionsSent: 'Les instructions de réinitialisation de mot de passe ont été envoyé à l\'adresse courriel'
+    instructionsSent: 'Les instructions de réinitialisation de mot de passe ont été envoyé à l\'adresse courriel',
   },
-  editPassword: {
-    title: 'Modifiez votre mot de passe',
-    submit: 'Enregistrer le mot de passe',
+  editAccount: {
+    title: 'Modifiez vos informations',
+    submit: 'Enregistrer les informations',
   },
   newPassword: {
     title: 'Nouveau mot de passe',

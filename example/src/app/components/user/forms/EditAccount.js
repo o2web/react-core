@@ -51,8 +51,8 @@ class EditAccountForm extends Component {
     return (
       <section className="section section--lined-background">
         <div className="wrapper wrapper--narrow">
-          <h1 className="page__title" watermark={t('pages.editPassword.title')}>
-            {t('pages.editPassword.title')}
+          <h1 className="page__title" watermark={t('pages.editAccount.title')}>
+            {t('pages.editAccount.title')}
           </h1>
 
           <form onSubmit={submitForm} className="form form--login">
@@ -76,7 +76,7 @@ class EditAccountForm extends Component {
             />
             <div className="form__actions">
               <button className="form__submit" type="submit" disabled={pristine || submitting}>
-                {t('pages.editPassword.submit')}
+                {t('pages.editAccount.submit')}
               </button>
             </div>
           </form>

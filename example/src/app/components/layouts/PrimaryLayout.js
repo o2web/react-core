@@ -9,13 +9,13 @@ import AboutPage from '../pages/About';
 import Artwork from '../artworks/Artwork';
 import Artworks from '../artworks/Artworks';
 import DemoForm from '../forms/Demo';
-import Login from '../user/forms/SignIn';
+import AuthenticatedComponent from '../auth/AuthenticatedComponent';
+import SignIn from '../user/forms/SignIn';
+import SignUp from '../user/forms/SignUp';
 import MyAccount from '../user/account/MyAccount';
 import ForgotPassword from '../user/forms/ForgotPassword';
-import CreateAccount from '../user/forms/SignUp';
-import NewPassword from '../user/forms/ResetPassword';
+import ResetPassword from '../user/forms/ResetPassword';
 import EditAccount from '../user/forms/EditAccount';
-import AuthenticatedComponent from '../auth/AuthenticatedComponent';
 
 // assets
 import logo from '../../../assets/images/logo.svg';
@@ -46,10 +46,10 @@ function PrimaryLayout() {
 
         <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
 
-        <CrumbRoute exact path="/en/login" title="login" component={AuthenticatedComponent(Login, false)} />
-        <CrumbRoute exact path="/en/createAccount" title="createAccount" component={AuthenticatedComponent(CreateAccount, false)} />
+        <CrumbRoute exact path="/en/login" title="login" component={AuthenticatedComponent(SignIn, false)} />
+        <CrumbRoute exact path="/en/createAccount" title="createAccount" component={AuthenticatedComponent(SignUp, false)} />
         <CrumbRoute exact path="/en/forgotPassword" title="forgotPassword" component={AuthenticatedComponent(ForgotPassword, false)} />
-        <CrumbRoute exact path="/en/resetPassword/:token" title="resetPassword" component={AuthenticatedComponent(NewPassword, false)} />
+        <CrumbRoute exact path="/en/resetPassword/:token" title="resetPassword" component={AuthenticatedComponent(ResetPassword, false)} />
 
         <CrumbRoute
           path="/en/account"
