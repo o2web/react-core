@@ -2,5 +2,6 @@ export default {
   home: 'Accueil',
   about: 'À propos',
   artworks: 'Oeuvres',
-  form_demo: 'Formulaire démo'
+  form_demo: 'Formulaire démo',
+  account: 'Mon compte',
 };

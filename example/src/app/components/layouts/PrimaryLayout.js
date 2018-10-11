@@ -9,6 +9,13 @@ import AboutPage from '../pages/About';
 import Artwork from '../artworks/Artwork';
 import Artworks from '../artworks/Artworks';
 import DemoForm from '../forms/Demo';
+import AuthenticatedComponent from '../auth/AuthenticatedComponent';
+import SignIn from '../user/forms/SignIn';
+import SignUp from '../user/forms/SignUp';
+import MyAccount from '../user/account/MyAccount';
+import ForgotPassword from '../user/forms/ForgotPassword';
+import ResetPassword from '../user/forms/ResetPassword';
+import EditAccount from '../user/forms/EditAccount';
 
 // assets
 import logo from '../../../assets/images/logo.svg';
@@ -36,7 +43,24 @@ function PrimaryLayout() {
             </Switch>
           }
         />
+
         <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
+
+        <CrumbRoute exact path="/en/login" title="login" component={AuthenticatedComponent(SignIn, false)} />
+        <CrumbRoute exact path="/en/createAccount" title="createAccount" component={AuthenticatedComponent(SignUp, false)} />
+        <CrumbRoute exact path="/en/forgotPassword" title="forgotPassword" component={AuthenticatedComponent(ForgotPassword, false)} />
+        <CrumbRoute exact path="/en/resetPassword/:token" title="resetPassword" component={AuthenticatedComponent(ResetPassword, false)} />
+
+        <CrumbRoute
+          path="/en/account"
+          title="account"
+          render={({ match, path }) =>
+            <div>
+              <Route exact path={match.url} component={AuthenticatedComponent(MyAccount)} />
+              <CrumbRoute path={`${path}/editAccount`} title="editAccount" component={AuthenticatedComponent(EditAccount)} />
+            </div>
+          }
+        />
       </main>
     </div>
   );
