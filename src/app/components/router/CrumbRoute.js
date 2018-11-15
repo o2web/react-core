@@ -17,10 +17,9 @@ function CrumbRoute({ component: Component, path, title, render, ...props }, { t
           pathname: routeProps.match.url,
         }}
         >
-          {Component ?
-            <Component {...routeProps} />
-            :
-            render({ ...routeProps, path })
+          {Component
+            ? <Component {...routeProps} />
+            : render({ ...routeProps, path })
           }
         </Breadcrumb>
       )}

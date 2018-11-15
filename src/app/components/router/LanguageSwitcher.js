@@ -38,18 +38,18 @@ class LanguageSwitcher extends Component {
   }
 
   render() {
-    const classes = this.props.className;
+    const { className } = this.props;
     const { otherLanguages } = this.state;
     const { t } = this.context;
 
     return (
-      <nav className={classes}>
-        <ul className={`links ${classes}__links`}>
-          {otherLanguages.map(({ language, pathname }) =>
-            <li className={`link ${classes}__link`} key={language}>
+      <nav className={className}>
+        <ul className={`links ${className}__links`}>
+          {otherLanguages.map(({ language, pathname }) => (
+            <li className={`link ${className}__link`} key={language}>
               <NavLink to={pathname}>{t(`languageSwitcher.${language}`)}</NavLink>
-            </li>,
-          )}
+            </li>
+          ))}
         </ul>
       </nav>
     );
