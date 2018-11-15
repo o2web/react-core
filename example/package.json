@@ -1,7 +1,7 @@
 {
   "name": "o2web-react-core-example",
   "homepage": "https://o2web.github.io/o2web-react-core",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -24,7 +24,6 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-ga": "^2.5.3",
     "redux": "^4.0.0",
     "redux-action-creator": "^2.3.0",
     "redux-form": "^7.4.2",

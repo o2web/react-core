@@ -6,14 +6,13 @@ import { withRouter } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
 
 class GAListener extends Component {
-
   constructor() {
     super();
     this.sendPageView = this.sendPageView.bind(this);
   }
 
   componentDidMount() {
-    const { router: { history }} = this.context;
+    const { router: { history } } = this.context;
     const analyticsCode = process.env.REACT_APP_GOOGLE_ANALYTICS_UA;
 
     ReactGA.initialize(analyticsCode, { debug: false });
