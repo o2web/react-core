@@ -4,7 +4,7 @@ import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { BaseRoute } from 'o2web-react-core';
+import { BaseRoute, GAListener } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
@@ -48,15 +48,17 @@ class App extends Component {
             <meta name="twitter:image" content="" />
           </Helmet>
           <BrowserRouter>
-            <Route
-              path="/"
-              render={(props) =>
-                <BaseRoute
-                  {...props}
-                  component={PrimaryLayout}
-                />
-              }
-            />
+            <GAListener>
+              <Route
+                path="/"
+                render={(props) =>
+                  <BaseRoute
+                    {...props}
+                    component={PrimaryLayout}
+                  />
+                }
+              />
+            </GAListener>
           </BrowserRouter>
         </CookiesProvider>
       </I18n>

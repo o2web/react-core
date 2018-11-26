@@ -1,7 +1,7 @@
 {
   "name": "o2web-react-core-example",
   "homepage": "https://o2web.github.io/o2web-react-core",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "private": true,
   "dependencies": {
