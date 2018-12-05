@@ -18,7 +18,7 @@ import ResetPassword from '../user/forms/ResetPassword';
 import EditAccount from '../user/forms/EditAccount';
 
 // assets
-import logo from '../../../assets/images/logo.svg';
+// import logo from '../../../assets/images/logo.svg';
 
 function PrimaryLayout() {
   return (
@@ -26,7 +26,7 @@ function PrimaryLayout() {
       <header className="app-header">
         <LanguageSwitcher />
         <NavLayout />
-        <img src={logo} className="app-logo" alt="logo" width="200" />
+        {/* <img src={logo} className="app-logo" alt="logo" width="200" /> */}
         <h1 className="app-title">React Vanille</h1>
       </header>
       <main>

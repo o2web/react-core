@@ -1,4 +1,5 @@
-import { asyncMutation, graphQLClient } from 'o2web-react-core';
+import { asyncMutation } from '../../../config/graphql/async-action-creator';
+import graphQLClient from '../../../config/graphql/client';
 import queries from './queries';
 import types from './types';
 import store from '../../../config/redux/store';

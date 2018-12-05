@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styles
-import '../Fields.scss';
-import './Select.scss';
+// import '../Fields.scss';
+// import './Select.scss';
 
 function Select(field, { t }) {
   const originalError = field.meta.error;

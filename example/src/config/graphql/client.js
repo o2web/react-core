@@ -2,10 +2,11 @@ import ApolloClient from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink, concat } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'node-fetch';
 
 const cache = new InMemoryCache();
 
-const httpLink = new HttpLink({ uri: process.env.REACT_APP_API_URL });
+const httpLink = new HttpLink({ uri: 'http://localhost:3001/graphql', fetch });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers

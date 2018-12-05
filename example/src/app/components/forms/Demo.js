@@ -10,7 +10,7 @@ import Textarea from './fields/textarea/Textarea';
 import validate from './validate/validate';
 
 // Styles
-import './Demo.scss';
+// import './Demo.scss';
 
 class DemoForm extends Component {
   static handleFormSubmit(values) {
