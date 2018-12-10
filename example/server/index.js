@@ -4,6 +4,7 @@ import express from 'express';
 import Window from 'window';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import ServerApp from '../src/app/components/ServerApp';
 import store from '../src/config/redux/store';
 
@@ -25,6 +26,8 @@ app.get('*', (request, response) => {
     </Provider>,
   );
 
+  const helmet = Helmet.renderStatic();
+
   const raw = `
     <!doctype html>
     <html lang="en">
@@ -33,13 +36,14 @@ app.get('*', (request, response) => {
         <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
         <meta name="theme-color" content="#000000">
         <link rel="manifest" href="build/manifest.json">
-        <title>o2web-react-core</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <link href="build/static/css/main.05aaf55c.css" rel="stylesheet">
       </head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root">${content}</div>
-        <script type="text/javascript" src="build/static/js/main.680a7768.js"></script>
+        <script type="text/javascript" src="build/static/js/main.e4869408.js"></script>
       </body>
     </html>
   `;

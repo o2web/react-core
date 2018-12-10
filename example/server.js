@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -200,9 +200,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _asyncActionCreator = __webpack_require__(14);
+var _asyncActionCreator = __webpack_require__(15);
 
-var _client = __webpack_require__(9);
+var _client = __webpack_require__(10);
 
 var _client2 = _interopRequireDefault(_client);
 
@@ -210,11 +210,11 @@ var _queries = __webpack_require__(68);
 
 var _queries2 = _interopRequireDefault(_queries);
 
-var _types = __webpack_require__(17);
+var _types = __webpack_require__(18);
 
 var _types2 = _interopRequireDefault(_types);
 
-var _store = __webpack_require__(11);
+var _store = __webpack_require__(12);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -254,6 +254,12 @@ exports.default = {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -325,7 +331,7 @@ var client = new _apolloClient2.default({
 exports.default = client;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -335,14 +341,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _reduxActionCreator = __webpack_require__(15);
+var _reduxActionCreator = __webpack_require__(16);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 exports.default = (0, _reduxActionCreator.createTypes)([].concat(_toConsumableArray((0, _reduxActionCreator.async)('FETCH_ARTWORK')), _toConsumableArray((0, _reduxActionCreator.async)('FETCH_ARTWORKS'))), 'ARTWORKS');
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -356,7 +362,7 @@ var _reduxThunk = __webpack_require__(55);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _redux = __webpack_require__(16);
+var _redux = __webpack_require__(17);
 
 var _index = __webpack_require__(56);
 
@@ -372,13 +378,13 @@ var store = createStoreWithMiddleware(_index2.default);
 exports.default = store;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-i18n");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -388,9 +394,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _asyncActionCreator = __webpack_require__(14);
+var _asyncActionCreator = __webpack_require__(15);
 
-var _client = __webpack_require__(9);
+var _client = __webpack_require__(10);
 
 var _client2 = _interopRequireDefault(_client);
 
@@ -398,11 +404,11 @@ var _queries = __webpack_require__(54);
 
 var _queries2 = _interopRequireDefault(_queries);
 
-var _types = __webpack_require__(10);
+var _types = __webpack_require__(11);
 
 var _types2 = _interopRequireDefault(_types);
 
-var _store = __webpack_require__(11);
+var _store = __webpack_require__(12);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -418,7 +424,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -439,7 +445,7 @@ var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reduxForm = __webpack_require__(3);
 
-var _client = __webpack_require__(9);
+var _client = __webpack_require__(10);
 
 var _client2 = _interopRequireDefault(_client);
 
@@ -520,19 +526,19 @@ function asyncMutation(store, type, mutation) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-action-creator");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -542,42 +548,44 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _reduxActionCreator = __webpack_require__(15);
+var _reduxActionCreator = __webpack_require__(16);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 exports.default = (0, _reduxActionCreator.createTypes)([].concat(_toConsumableArray((0, _reduxActionCreator.async)('SIGN_IN')), _toConsumableArray((0, _reduxActionCreator.async)('SIGN_UP')), _toConsumableArray((0, _reduxActionCreator.async)('VALIDATE_TOKEN')), _toConsumableArray((0, _reduxActionCreator.async)('FORGOT_PASSWORD')), _toConsumableArray((0, _reduxActionCreator.async)('RESET_PASSWORD')), _toConsumableArray((0, _reduxActionCreator.async)('UPDATE_ACCOUNT')), ['VALIDATE_NO_TOKEN', 'SIGN_OUT']), 'USER');
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(19);
+__webpack_require__(20);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _express = __webpack_require__(20);
+var _express = __webpack_require__(21);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _window = __webpack_require__(21);
+var _window = __webpack_require__(22);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _server = __webpack_require__(22);
+var _server = __webpack_require__(23);
 
 var _reactRedux = __webpack_require__(2);
 
-var _ServerApp = __webpack_require__(23);
+var _reactHelmet = __webpack_require__(9);
+
+var _ServerApp = __webpack_require__(24);
 
 var _ServerApp2 = _interopRequireDefault(_ServerApp);
 
-var _store = __webpack_require__(11);
+var _store = __webpack_require__(12);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -601,7 +609,9 @@ app.get('*', function (request, response) {
     _react2.default.createElement(_ServerApp2.default, { request: request })
   ));
 
-  var raw = '\n    <!doctype html>\n    <html lang="en">\n      <head>\n        <meta charset="utf-8">\n        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">\n        <meta name="theme-color" content="#000000">\n        <link rel="manifest" href="build/manifest.json">\n        <title>o2web-react-core</title>\n        <link href="build/static/css/main.05aaf55c.css" rel="stylesheet">\n      </head>\n      <body>\n        <noscript>You need to enable JavaScript to run this app.</noscript>\n        <div id="root">' + content + '</div>\n        <script type="text/javascript" src="build/static/js/main.680a7768.js"></script>\n      </body>\n    </html>\n  ';
+  var helmet = _reactHelmet.Helmet.renderStatic();
+
+  var raw = '\n    <!doctype html>\n    <html lang="en">\n      <head>\n        <meta charset="utf-8">\n        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">\n        <meta name="theme-color" content="#000000">\n        <link rel="manifest" href="build/manifest.json">\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        <link href="build/static/css/main.05aaf55c.css" rel="stylesheet">\n      </head>\n      <body>\n        <noscript>You need to enable JavaScript to run this app.</noscript>\n        <div id="root">' + content + '</div>\n        <script type="text/javascript" src="build/static/js/main.e4869408.js"></script>\n      </body>\n    </html>\n  ';
 
   response.send(raw);
 });
@@ -611,31 +621,31 @@ app.listen(PORT, function () {
 });
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("ignore-styles");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("window");
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -657,13 +667,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reduxI18n = __webpack_require__(12);
+var _reduxI18n = __webpack_require__(13);
 
 var _reduxI18n2 = _interopRequireDefault(_reduxI18n);
 
-var _reactCookie = __webpack_require__(24);
-
-var _reactHelmet = __webpack_require__(25);
+var _reactCookie = __webpack_require__(25);
 
 var _reactRouterDom = __webpack_require__(5);
 
@@ -717,29 +725,6 @@ var App = function (_Component) {
           _reactCookie.CookiesProvider,
           null,
           _react2.default.createElement(
-            _reactHelmet.Helmet,
-            null,
-            _react2.default.createElement('meta', { charSet: 'utf-8' }),
-            _react2.default.createElement(
-              'title',
-              null,
-              'O2 Web React Core'
-            ),
-            _react2.default.createElement('link', { rel: 'canonical', href: '' }),
-            _react2.default.createElement('meta', { name: 'description', content: '' }),
-            _react2.default.createElement('meta', { name: 'keywords', content: '' }),
-            _react2.default.createElement('meta', { property: 'og:title', content: '' }),
-            _react2.default.createElement('meta', { property: 'og:type', content: '' }),
-            _react2.default.createElement('meta', { property: 'og:url', content: window.location.href }),
-            _react2.default.createElement('meta', { property: 'og:description', content: '' }),
-            _react2.default.createElement('meta', { property: 'og:image', content: '' }),
-            _react2.default.createElement('meta', { name: 'twitter:site', content: '' }),
-            _react2.default.createElement('meta', { name: 'twitter:card', content: 'summary' }),
-            _react2.default.createElement('meta', { name: 'twitter:title', content: '' }),
-            _react2.default.createElement('meta', { name: 'twitter:description', content: '' }),
-            _react2.default.createElement('meta', { name: 'twitter:image', content: '' })
-          ),
-          _react2.default.createElement(
             _reactRouterDom.StaticRouter,
             { location: request.url, context: {} },
             _react2.default.createElement(
@@ -777,16 +762,10 @@ App.childContextTypes = {
 exports.default = App;
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-cookie");
-
-/***/ }),
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-helmet");
+module.exports = require("react-cookie");
 
 /***/ }),
 /* 26 */
@@ -1518,9 +1497,10 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _reactHelmet = __webpack_require__(9);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// libs
 function Home(props, _ref) {
   var t = _ref.t;
 
@@ -1528,12 +1508,29 @@ function Home(props, _ref) {
     'div',
     null,
     _react2.default.createElement(
+      _reactHelmet.Helmet,
+      null,
+      _react2.default.createElement(
+        'title',
+        null,
+        'Homepage'
+      ),
+      _react2.default.createElement('meta', { name: 'description', content: 'Description - Homepage' }),
+      _react2.default.createElement('meta', { property: 'og:title', content: 'Og - Homepage' }),
+      _react2.default.createElement('meta', { name: 'og:description', content: 'OG - Homepage description' }),
+      _react2.default.createElement('meta', { name: 'og:image', content: '' }),
+      _react2.default.createElement('meta', { name: 'twitter:title', content: 'twitter - Homepage title' }),
+      _react2.default.createElement('meta', { name: 'twitter:description', content: 'twitter - Homepage description' }),
+      _react2.default.createElement('meta', { name: 'twitter:image', content: '' })
+    ),
+    _react2.default.createElement(
       'h2',
       null,
       t('pages.titles.home')
     )
   );
-}
+} // libs
+
 
 Home.contextTypes = {
   t: _propTypes2.default.func
@@ -1560,9 +1557,10 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _reactHelmet = __webpack_require__(9);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// libs
 function About(pros, _ref) {
   var t = _ref.t;
 
@@ -1570,12 +1568,29 @@ function About(pros, _ref) {
     'div',
     null,
     _react2.default.createElement(
+      _reactHelmet.Helmet,
+      null,
+      _react2.default.createElement(
+        'title',
+        null,
+        '\xC0 propos'
+      ),
+      _react2.default.createElement('meta', { name: 'description', content: 'Description - Page \xE0 propos' }),
+      _react2.default.createElement('meta', { property: 'og:title', content: 'Og - \xC0 propos' }),
+      _react2.default.createElement('meta', { name: 'og:description', content: 'OG - \xC0 propos description' }),
+      _react2.default.createElement('meta', { name: 'og:image', content: '' }),
+      _react2.default.createElement('meta', { name: 'twitter:title', content: 'twitter - \xC0 Propos title' }),
+      _react2.default.createElement('meta', { name: 'twitter:description', content: 'twitter - \xC0 Propos description' }),
+      _react2.default.createElement('meta', { name: 'twitter:image', content: '' })
+    ),
+    _react2.default.createElement(
       'h2',
       null,
       t('pages.titles.about')
     )
   );
-}
+} // libs
+
 
 About.contextTypes = {
   t: _propTypes2.default.func
@@ -1606,7 +1621,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRedux = __webpack_require__(2);
 
-var _index = __webpack_require__(13);
+var _index = __webpack_require__(14);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -1747,9 +1762,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(16);
+var _redux = __webpack_require__(17);
 
-var _reduxI18n = __webpack_require__(12);
+var _reduxI18n = __webpack_require__(13);
 
 var _reduxForm = __webpack_require__(3);
 
@@ -1808,7 +1823,7 @@ exports.default = function () {
   return state;
 };
 
-var _types = __webpack_require__(10);
+var _types = __webpack_require__(11);
 
 var _types2 = _interopRequireDefault(_types);
 
@@ -1849,7 +1864,7 @@ exports.default = function () {
   return state;
 };
 
-var _types = __webpack_require__(10);
+var _types = __webpack_require__(11);
 
 var _types2 = _interopRequireDefault(_types);
 
@@ -1910,7 +1925,7 @@ exports.default = function () {
   return state;
 };
 
-var _types = __webpack_require__(17);
+var _types = __webpack_require__(18);
 
 var _types2 = _interopRequireDefault(_types);
 
@@ -1948,7 +1963,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(5);
 
-var _index = __webpack_require__(13);
+var _index = __webpack_require__(14);
 
 var _index2 = _interopRequireDefault(_index);
 
