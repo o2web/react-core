@@ -38,12 +38,11 @@ app.get('*', (request, response) => {
         <link rel="manifest" href="build/manifest.json">
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
-        <link href="build/static/css/main.05aaf55c.css" rel="stylesheet">
+        <link href="/build/static/css/main.css" rel="stylesheet">
       </head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root">${content}</div>
-        <script type="text/javascript" src="build/static/js/main.e4869408.js"></script>
       </body>
     </html>
   `;

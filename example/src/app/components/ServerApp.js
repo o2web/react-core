@@ -9,7 +9,7 @@ import translations, {
   availableLanguages,
   defaultLanguage,
 } from '../../config/locales/translations';
-// import './../../assets/styles/app.scss';
+import '../../assets/styles/app.scss';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
 class App extends Component {

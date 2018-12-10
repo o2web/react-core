@@ -3,9 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
+// Styles
+import './About.scss';
+
 function About(pros, { t }) {
   return (
-    <div>
+    <div className="about">
       <Helmet>
         <title>À propos</title>
         <meta name="description" content="Description - Page à propos" />
