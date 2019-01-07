@@ -22,7 +22,7 @@ app.use('/build', express.static('build'));
 app.get('*', (request, response) => {
   const content = renderToString(
     <Provider store={store}>
-      <ServerApp request={request} />
+      <ServerApp request={request} response={response} />
     </Provider>,
   );
 
