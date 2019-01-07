@@ -26,6 +26,10 @@ app.get('*', (request, response) => {
     </Provider>,
   );
 
+  if (request.url === '/') {
+    response.redirect(302, '/fr');
+  }
+
   const helmet = Helmet.renderStatic();
 
   const raw = `

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs } from 'react-breadcrumbs';
 import { Switch } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { CrumbRoute, Route, LanguageSwitcher } from 'o2web-react-core';
 
 import NavLayout from './NavLayout';
@@ -31,6 +32,16 @@ function PrimaryLayout() {
       </header>
       <main>
         <Breadcrumbs />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Redirect
+              push
+              to="/en"
+            />
+          )}
+        />
         <Route exact path="/en" component={HomePage} />
         <CrumbRoute exact path="/en/about" title="about" component={AboutPage} />
         <CrumbRoute

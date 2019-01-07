@@ -27,10 +27,11 @@ class App extends Component {
 
   render() {
     const { request } = this.props;
+    const requestUrl = request.url === '/' ? '/fr' : request.url;
     return (
       <I18n translations={translations} initialLang={defaultLanguage}>
         <CookiesProvider>
-          <StaticRouter location={request.url} context={{}}>
+          <StaticRouter location={requestUrl} context={{}}>
             <GAListener>
               <Route
                 path="/"
