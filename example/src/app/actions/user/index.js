@@ -19,7 +19,9 @@ export default {
     graphQLClient,
   ),
   signOut: () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('Authorization');
+    localStorage.removeItem('Expires');
+    localStorage.removeItem('RefreshToken');
     return {
       type: types.SIGN_OUT,
     };

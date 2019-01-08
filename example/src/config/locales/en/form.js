@@ -12,6 +12,7 @@ export default {
   newPassword: 'New password',
   confirmPassword: 'Confirm password',
   confirmNewPassword: 'Confirm new password',
+  rememberMe: 'Remember me',
 
   validation: {
     emailRequired: 'An email address is required.',

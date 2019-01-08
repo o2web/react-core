@@ -9,14 +9,21 @@ const httpLink = new HttpLink({ uri: process.env.REACT_APP_API_URL });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  const token = localStorage.getItem('token');
+  const authorization = localStorage.getItem('Authorization');
+  const expires = localStorage.getItem('Expires');
+  const refreshToken = localStorage.getItem('RefreshToken');
 
-  if (token) {
-    operation.setContext({
-      headers: {
-        Authorization: token,
-      },
-    });
+  if (authorization) {
+    const headers = {
+      Authorization: authorization,
+    };
+
+    // set refresh token if token is expired and refresh token exists
+    if (expires && new Date(expires * 1000) <= new Date() && refreshToken) {
+      headers.RefreshToken = refreshToken;
+    }
+
+    operation.setContext({ headers });
   }
 
   return forward(operation);
@@ -29,11 +36,12 @@ const afterwareLink = new ApolloLink((operation, forward) => (
 
     // update token after query
     if (headers) {
-      const token = headers.get('Authorization');
-
-      if (token) {
-        localStorage.setItem('token', token);
-      }
+      ['Authorization', 'Expires', 'RefreshToken'].forEach((key) => {
+        const header = headers.get(key);
+        if (header) {
+          localStorage.setItem(key, header);
+        }
+      });
     }
 
     return response;
