@@ -47,6 +47,11 @@ app.get('*', (request, response) => {
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root">${content}</div>
+        <script>
+          // WARNING: See the following for security issues around embedding JSON in HTML:
+          // http://redux.js.org/recipes/ServerRendering.html#security-considerations
+          window.PRELOADED_STATE = ${JSON.stringify(store).replace(/</g, '\\\u003c')}
+        </script>
       </body>
     </html>
   `;
