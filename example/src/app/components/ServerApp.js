@@ -16,37 +16,44 @@ import PrimaryLayout from './layouts/PrimaryLayout';
 class App extends Component {
   static propTypes = {
     request: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
   };
 
   getChildContext() {
+    const { response } = this.props;
+
     return {
       translations,
       availableLanguages,
       defaultLanguage,
+      response,
     };
   }
 
   render() {
     const { authenticated, request, response } = this.props;
-    const pathname = request.url;
-    let requestUrl = request.url === '/' ? '/fr' : request.url;
-    if (authenticated && pathname === '/en/login') {
-      response.redirect(302, '/en/account');
-      requestUrl = '/en/account';
-    } else if (!authenticated && pathname === '/en/account') {
-      response.redirect(302, '/en/login');
-      requestUrl = '/en/login';
-    } else if (!authenticated && pathname === '/fr/mon-compte') {
-      response.redirect(302, '/fr/connexion');
-      requestUrl = '/fr/connexion';
-    } else if (authenticated && pathname === '/fr/connexion') {
-      response.redirect(302, '/fr/mon-compte');
-      requestUrl = '/fr/mon-compte';
-    }
+    console.log(authenticated);
+    console.log(request);
+    console.log(response);
+    // const pathname = request.url;
+    // let requestUrl = request.url === '/' ? '/fr' : request.url;
+    // if (authenticated && pathname === '/en/login') {
+    //   response.redirect(302, '/en/account');
+    //   requestUrl = '/en/account';
+    // } else if (!authenticated && pathname === '/en/account') {
+    //   response.redirect(302, '/en/login');
+    //   requestUrl = '/en/login';
+    // } else if (!authenticated && pathname === '/fr/mon-compte') {
+    //   response.redirect(302, '/fr/connexion');
+    //   requestUrl = '/fr/connexion';
+    // } else if (authenticated && pathname === '/fr/connexion') {
+    //   response.redirect(302, '/fr/mon-compte');
+    //   requestUrl = '/fr/mon-compte';
+    // }
     return (
       <I18n translations={translations} initialLang={defaultLanguage}>
         <CookiesProvider>
-          <StaticRouter location={requestUrl} context={{}}>
+          <StaticRouter location={request.url} context={{}}>
             <GAListener>
               <Route
                 path="/"
@@ -69,6 +76,7 @@ App.childContextTypes = {
   translations: PropTypes.object.isRequired,
   availableLanguages: PropTypes.array.isRequired,
   defaultLanguage: PropTypes.string.isRequired,
+  response: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

@@ -45,7 +45,6 @@ app.get('*', (request, response) => {
         <link href="/build/static/css/main.css" rel="stylesheet">
       </head>
       <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root">${content}</div>
         <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
