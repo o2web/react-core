@@ -39,9 +39,17 @@ export default function (ComposedComponent, authRequired = true) {
 
         // redirect to login if user is not authenticated
         if (authenticated && !authRequired && pathname !== accountRoute) {
-          response ? response.redirect(accountRoute) : history.push(accountRoute);
+          if (response) {
+            response.redirect(accountRoute);
+          } else {
+            history.push(accountRoute);
+          }
         } else if (!authenticated && authRequired && pathname !== signInRoute) {
-          response ? response.redirect(accountRoute) : history.push(signInRoute);
+          if (response) {
+            response.redirect(accountRoute);
+          } else {
+            history.push(signInRoute);
+          }
         }
       }
     }
