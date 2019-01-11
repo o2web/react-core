@@ -12,6 +12,7 @@ export default {
   newPassword: 'Nouveau mot de passe',
   confirmPassword: 'Confirmez le mot de passe',
   confirmNewPassword: 'Confirm new password',
+  rememberMe: 'Se souvenir de moi',
 
   validation: {
     emailRequired: 'Un adresse courriel est requise.',

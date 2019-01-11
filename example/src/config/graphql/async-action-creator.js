@@ -28,7 +28,8 @@ export function asyncQuery(
         const payload = response.data;
         const data = Object.values(payload)[0] || {};
 
-        const responseType = response.errors || data.errors ? fail : success;
+        const errors = data.errors || [];
+        const responseType = response.errors || errors.length > 0 ? fail : success;
         dispatch({ type: `${type}_${responseType}`, payload });
 
         return payload;
@@ -62,15 +63,16 @@ export function asyncMutation(
         const payload = response.data;
         const data = Object.values(payload)[0] || {};
 
-        const responseType = response.errors || data.errors ? fail : success;
+        const errors = data.errors || [];
+        const responseType = response.errors || errors.length > 0 ? fail : success;
         dispatch({ type: `${type}_${responseType}`, payload });
 
-        if (data.errors instanceof Object) {
-          const errors = data.errors.reduce(
+        if (data.errors instanceof Array && data.errors.length > 0) {
+          const formErrors = data.errors.reduce(
             (obj, { field, message }) => ({ ...obj, [field]: message }), {},
           );
 
-          dispatch(stopSubmit(Object.keys(payload)[0], errors));
+          dispatch(stopSubmit(Object.keys(payload)[0], formErrors));
         }
 
         return payload;

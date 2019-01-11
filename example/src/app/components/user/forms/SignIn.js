@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'o2web-react-core';
 import Input from '../../forms/fields/input/Input';
+import Checkbox from '../../forms/fields/checkbox/Checkbox';
 import validate from '../../forms/validate/validate';
 
 import actions from '../../../actions/user/';
@@ -67,6 +68,11 @@ class SignInForm extends Component {
                 type="password"
                 label="password"
               />
+              <Checkbox
+                name="rememberMe"
+                component="input"
+                type="checkbox"
+              />
               <div className="form__forgot-password-link">
                 <NavLink to="en/forgotPassword">
                   {t('pages.login.forgotPassword')}
@@ -95,13 +101,13 @@ class SignInForm extends Component {
 }
 
 function mapStateToProps() {
-  return {
-    initialValues: {},
-  };
+  return {};
 }
 
 export default connect(mapStateToProps, actions)(reduxForm({
   form: 'signIn',
-  enableReinitialize: true,
+  initialValues: {
+    rememberMe: false,
+  },
   validate,
 })(SignInForm));

@@ -1,7 +1,7 @@
 export default {
   signIn: `
-    mutation($email: String!, $password: String!) {
-      signIn(email: $email, password: $password) {
+    mutation($email: String!, $password: String!, $rememberMe: Boolean!) {
+      signIn(email: $email, password: $password, rememberMe: $rememberMe) {
         user {
           email
         }

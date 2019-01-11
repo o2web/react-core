@@ -24,11 +24,16 @@ delete window.PRELOADED_STATE;
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 const store = createStoreWithMiddleware(reducers, preloadedState);
-const token = localStorage.getItem('token');
+
+const token = localStorage.getItem('Authorization');
 
 if (token) {
   store.dispatch(actions.validateToken()).then((data) => {
-    if (!data || !data.validateToken.valid) localStorage.removeItem('token');
+    if (!data || !data.validateToken.valid) {
+      localStorage.removeItem('Authorization');
+      localStorage.removeItem('Exipres');
+      localStorage.removeItem('RefreshToken');
+    }
   });
 } else {
   store.dispatch(actions.validateNoToken());
