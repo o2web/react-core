@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import ServerApp from '../src/app/components/ServerApp';
 import store from '../src/config/redux/store';
+import actions from '../src/app/actions/user';
 
 global.window = new Window();
 global.window.scrollTo = () => {};
@@ -20,15 +21,13 @@ const app = express();
 app.use('/build', express.static('build'));
 
 app.get('*', (request, response) => {
+  store.dispatch(actions.validateNoToken());
+
   const content = renderToString(
     <Provider store={store}>
       <ServerApp request={request} response={response} />
     </Provider>,
   );
-
-  if (request.url === '/') {
-    response.redirect(302, '/fr');
-  }
 
   const helmet = Helmet.renderStatic();
 

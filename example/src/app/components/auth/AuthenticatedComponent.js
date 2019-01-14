@@ -16,7 +16,7 @@ export default function (ComposedComponent, authRequired = true) {
 
     static contextTypes = {
       t: PropTypes.func,
-      response: PropTypes.object.isRequired,
+      response: PropTypes.object,
     };
 
     componentWillMount() {
@@ -32,7 +32,6 @@ export default function (ComposedComponent, authRequired = true) {
       const { authenticated, history, validatingToken, location: { pathname } } = this.props;
       const { response, t } = this.context;
 
-
       if (!validatingToken) {
         const accountRoute = translateRoute('/en/account', t);
         const signInRoute = translateRoute('/en/login', t);
@@ -46,7 +45,7 @@ export default function (ComposedComponent, authRequired = true) {
           }
         } else if (!authenticated && authRequired && pathname !== signInRoute) {
           if (response) {
-            response.redirect(accountRoute);
+            response.redirect(signInRoute);
           } else {
             history.push(signInRoute);
           }

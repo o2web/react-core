@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from 'redux-i18n';
-import { connect } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 import { StaticRouter, Route } from 'react-router-dom';
 import { BaseRoute, GAListener } from 'o2web-react-core';
@@ -31,25 +30,7 @@ class App extends Component {
   }
 
   render() {
-    const { authenticated, request, response } = this.props;
-    console.log(authenticated);
-    console.log(request);
-    console.log(response);
-    // const pathname = request.url;
-    // let requestUrl = request.url === '/' ? '/fr' : request.url;
-    // if (authenticated && pathname === '/en/login') {
-    //   response.redirect(302, '/en/account');
-    //   requestUrl = '/en/account';
-    // } else if (!authenticated && pathname === '/en/account') {
-    //   response.redirect(302, '/en/login');
-    //   requestUrl = '/en/login';
-    // } else if (!authenticated && pathname === '/fr/mon-compte') {
-    //   response.redirect(302, '/fr/connexion');
-    //   requestUrl = '/fr/connexion';
-    // } else if (authenticated && pathname === '/fr/connexion') {
-    //   response.redirect(302, '/fr/mon-compte');
-    //   requestUrl = '/fr/mon-compte';
-    // }
+    const { request } = this.props;
     return (
       <I18n translations={translations} initialLang={defaultLanguage}>
         <CookiesProvider>
@@ -79,11 +60,4 @@ App.childContextTypes = {
   response: PropTypes.object.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    authenticated: state.user.authenticated,
-    validatingToken: state.user.validatingToken,
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

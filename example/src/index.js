@@ -39,7 +39,7 @@ if (token) {
   store.dispatch(actions.validateNoToken());
 }
 
-ReactDOM.hydrate(
+ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
