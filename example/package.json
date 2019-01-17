@@ -57,7 +57,7 @@
   },
   "scripts": {
     "build-server": "webpack --config webpack.server.config.js",
-    "server": "node server.js",
+    "server": "node build/server.js",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",

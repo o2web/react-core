@@ -50,7 +50,6 @@ app.get('*', (request, response) => {
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.PRELOADED_STATE = ${JSON.stringify(store).replace(/</g, '\\\u003c')}
         </script>
-        <link href="/build/static/js/server.js" rel="stylesheet">
       </body>
     </html>
   `;

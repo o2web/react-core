@@ -7,8 +7,8 @@ module.exports = {
   target: 'node',
   entry: './server/index.js',
   output: {
-    path: path.resolve(__dirname, 'build/static/js'),
-    publicPath: '/build/static/js',
+    path: path.resolve(__dirname, 'build/'),
+    publicPath: '/build',
     filename: 'server.js',
     library: 'app',
     libraryTarget: 'commonjs2',
@@ -35,6 +35,6 @@ module.exports = {
   },
   externals: [webpackNodeExternals()],
   plugins: [
-    new ExtractTextPlugin('../css/main.css'),
+    new ExtractTextPlugin('./static/css/main.css'),
   ],
 };
