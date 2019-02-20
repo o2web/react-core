@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import translateRoute from '../../helpers/routes-translator';
 
-function TranslatedNavLink({ to, children }, { t }) {
+function TranslatedNavLink({ to, children, ...props }, { t }) {
   return (
-    <NavLink to={translateRoute(to, t)}>{children}</NavLink>
+    <NavLink {...props} to={translateRoute(to, t)}>{children}</NavLink>
   );
 }
 
