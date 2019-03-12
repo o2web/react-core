@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import translateRoute from '../../helpers/routes-translator';
 
 function TranslatedNavLink({ to, children, className, onClick }, { t }) {
@@ -28,4 +28,4 @@ TranslatedNavLink.defaultProps = {
   onClick: () => {},
 };
 
-export default withRouter(TranslatedNavLink);
+export default TranslatedNavLink;
