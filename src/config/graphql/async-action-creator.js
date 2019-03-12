@@ -69,8 +69,23 @@ export function asyncMutation(
 
         if (data.errors instanceof Array && data.errors.length > 0) {
           const formErrors = data.errors.reduce(
-            (obj, { field, message }) => ({ ...obj, [field]: message }), {},
-          );
+            (object, { field, message }) => {
+              const fields = field.split('.');
+
+              if (fields.length === 1) {
+                return { ...object, [field]: message };
+              }
+
+              const nestedFields = fields.reverse().reduce((nestedObject, nestedField, index) => {
+                if (index === 0) {
+                  return { ...nestedObject, [nestedField]: message };
+                }
+
+                return { [nestedField]: nestedObject };
+              }, {});
+
+              return { ...object, ...nestedFields };
+            }, {});
 
           dispatch(stopSubmit(Object.keys(payload)[0], formErrors));
         }

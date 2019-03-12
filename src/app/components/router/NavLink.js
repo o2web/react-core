@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import translateRoute from '../../helpers/routes-translator';
 
-function TranslatedNavLink({ to, children }, { t }) {
+function TranslatedNavLink({ to, children, className, onClick }, { t }) {
   return (
-    <NavLink to={translateRoute(to, t)}>{children}</NavLink>
+    <NavLink className={className} onClick={onClick} to={translateRoute(to, t)}>{children}</NavLink>
   );
 }
 
@@ -17,8 +17,15 @@ TranslatedNavLink.contextTypes = {
 };
 
 TranslatedNavLink.propTypes = {
-  to: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  to: PropTypes.string.isRequired,
 };
 
-export default withRouter(TranslatedNavLink);
+TranslatedNavLink.defaultProps = {
+  className: '',
+  onClick: () => {},
+};
+
+export default TranslatedNavLink;
