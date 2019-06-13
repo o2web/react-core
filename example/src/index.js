@@ -18,7 +18,7 @@ if (token) {
   store.dispatch(actions.validateToken()).then((data) => {
     if (!data || !data.validateToken.valid) {
       localStorage.removeItem('Authorization');
-      localStorage.removeItem('Exipres');
+      localStorage.removeItem('Expires');
       localStorage.removeItem('RefreshToken');
     }
   });
