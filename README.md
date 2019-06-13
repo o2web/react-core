@@ -1,7 +1,5 @@
 # o2web-react-core
 
-> O2 Web React Core
-
 [![NPM](https://img.shields.io/npm/v/o2web-react-core.svg)](https://www.npmjs.com/package/o2web-react-core) 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -38,7 +36,7 @@ This package uses [Apollo Client](https://github.com/apollographql/apollo-client
 
 Duplicate `.env.sample` file and add GraphQL endpoint
 
-```js
+```bash
 REACT_APP_API_URL=https://example.com/graphql
 ```
 
@@ -72,7 +70,7 @@ export default {
 
 ### Authentication
 
-This package is intended to authenticate with a GraphQL Authentication with JWT. You can use the gem `graphql-auth` if you are using rails for your api
+This package is intended to authenticate with a GraphQL Authentication with JWT. You can use the gem [graphql-auth](https://github.com/o2web/graphql-auth) if you are using rails for your api
 
 The authentication forms Components are located in `example/src/app/components/user
 
@@ -223,7 +221,7 @@ Check `/example/src/app/components/layouts/PrimaryLayout.js` for automatic bread
 
 ### SEO
 
-This package uses [react-helmet](https://github.com/svenanders/react-breadcrumbs) to manage document head
+This package uses [react-helmet](https://github.com/nfl/react-helmet) to manage document head
 
 `<Helmet />` can be used in nested components. The most nested definition will be displayed in the page.
 Check `/example/src/app/components/App.js` for document head definition example
