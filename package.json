@@ -70,7 +70,7 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8",
+    "react-scripts": "3.0.1",
     "redux": "^4.0.0",
     "redux-action-creator": "^2.3.0",
     "redux-form": "^7.4.2",
@@ -82,7 +82,7 @@
     "rollup-plugin-eslint": "^5.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-postcss": "2.0.3",
     "rollup-plugin-url": "^1.4.0"
   },
   "files": [
