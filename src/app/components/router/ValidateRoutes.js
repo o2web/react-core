@@ -28,13 +28,11 @@ class ValidateRoutes extends Component {
       hasChildren: !hasChildren ? false : hasChildren,
     }));
     const isValidPath = translatedPaths.map(({ translatedPath, exact, hasChildren }) => {
-      if (exact && translatedPath === currentPath) {
-        return true;
-      }
-      if (hasChildren && currentPath.includes(`${translatedPath}/`)) {
-        return true;
-      }
-      if (currentPath === translatedPath) {
+      if (
+        (exact && translatedPath === currentPath)
+        || (hasChildren && currentPath.includes(`${translatedPath}/`))
+        || (currentPath === translatedPath)
+      ) {
         return true;
       }
       return false;
