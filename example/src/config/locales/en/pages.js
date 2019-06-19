@@ -2,6 +2,7 @@ export default {
   titles: {
     home: 'Home page',
     about: 'About page',
+    notFound: 'Page not found',
   },
 
   // Account
