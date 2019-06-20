@@ -52,7 +52,7 @@ function PrimaryLayout() {
           <CrumbRoute exact path="/en/login" title="login" component={AuthenticatedComponent(SignIn, false)} />
           <CrumbRoute exact path="/en/createAccount" title="createAccount" component={AuthenticatedComponent(SignUp, false)} />
           <CrumbRoute exact path="/en/forgotPassword" title="forgotPassword" component={AuthenticatedComponent(ForgotPassword, false)} />
-          <CrumbRoute exact path="/en/resetPassword/:token" title="resetPassword" component={AuthenticatedComponent(ResetPassword, false)} />
+          <CrumbRoute exact path="/en/resetPassword/:token" hasToken title="resetPassword" component={AuthenticatedComponent(ResetPassword, false)} />
 
           <CrumbRoute
             path="/en/account"

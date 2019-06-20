@@ -22,15 +22,17 @@ class ValidateRoutes extends Component {
   currentPathExist() {
     const { children, location: { pathname: currentPath } } = this.props;
     const { t } = this.context;
-    const translatedPaths = children.map(({ props: { path, exact, hasChildren } }) => ({
+    const translatedPaths = children.map(({ props: { path, exact, hasChildren, hasToken } }) => ({
       translatedPath: translateRoute(path, t),
       exact: !exact ? false : exact,
       hasChildren: !hasChildren ? false : hasChildren,
+      hasToken: !hasToken ? false : hasToken,
     }));
-    const isValidPath = translatedPaths.map(({ translatedPath, exact, hasChildren }) => {
+    const isValidPath = translatedPaths.map(({ translatedPath, exact, hasChildren, hasToken }) => {
       if (
         (exact && translatedPath === currentPath)
         || (hasChildren && currentPath.includes(`${translatedPath}/`))
+        || (hasToken && currentPath.includes(`${translatedPath.substr(0, translatedPath.lastIndexOf(':'))}`))
         || (currentPath === translatedPath)
       ) {
         return true;
