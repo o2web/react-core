@@ -22,23 +22,24 @@ class ValidateRoutes extends Component {
   currentPathExist() {
     const { children, location: { pathname: currentPath } } = this.props;
     const { t } = this.context;
-    const translatedPaths = children.map(({ props: { path, exact, hasChildren, hasToken } }) => ({
+    const translatedPaths = children.map(({ props: { path, exact, hasChildren, withParams } }) => ({
       translatedPath: translateRoute(path, t),
       exact: !exact ? false : exact,
       hasChildren: !hasChildren ? false : hasChildren,
-      hasToken: !hasToken ? false : hasToken,
+      withParams: !withParams ? false : withParams,
     }));
-    const isValidPath = translatedPaths.map(({ translatedPath, exact, hasChildren, hasToken }) => {
-      if (
-        (exact && translatedPath === currentPath)
-        || (hasChildren && currentPath.includes(`${translatedPath}/`))
-        || (hasToken && currentPath.includes(`${translatedPath.substr(0, translatedPath.lastIndexOf(':'))}`))
-        || (currentPath === translatedPath)
-      ) {
-        return true;
-      }
-      return false;
-    });
+    const isValidPath = translatedPaths.map(
+      ({ translatedPath, exact, hasChildren, withParams }) => {
+        if (
+          (exact && translatedPath === currentPath)
+          || (hasChildren && currentPath.includes(`${translatedPath}/`))
+          || (withParams && currentPath.includes(`${translatedPath.substr(0, translatedPath.lastIndexOf(':'))}`))
+          || (currentPath === translatedPath)
+        ) {
+          return true;
+        }
+        return false;
+      });
     return (isValidPath.indexOf(true) > -1);
   }
 
