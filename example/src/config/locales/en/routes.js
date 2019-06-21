@@ -9,4 +9,5 @@ export default {
   forgotPassword: 'forgot-password',
   resetPassword: 'new-password',
   editAccount: 'edit-account',
+  notFound: 'not-found',
 };

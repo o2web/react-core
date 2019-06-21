@@ -7,6 +7,7 @@ import GAListener from './app/components/router/GAListener';
 import NavLink from './app/components/router/NavLink';
 import Route from './app/components/router/Route';
 import translateRoute from './app/helpers/routes-translator';
+import ValidateRoutes from './app/components/router/ValidateRoutes';
 
 export {
   BaseRoute,
@@ -19,4 +20,5 @@ export {
   asyncQuery,
   asyncMutation,
   graphQLClient,
+  ValidateRoutes,
 };
