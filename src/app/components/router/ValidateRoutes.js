@@ -34,7 +34,7 @@ class ValidateRoutes extends Component {
           (exact && translatedPath === currentPath)
           || (hasChildren && currentPath.includes(`${translatedPath}/`))
           || (withParams && currentPath.includes(`${translatedPath.substr(0, translatedPath.lastIndexOf(':'))}`))
-          || (currentPath === translatedPath)
+          || (currentPath === translatedPath || currentPath === `${translatedPath}/`)
         ) {
           return true;
         }
