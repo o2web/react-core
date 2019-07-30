@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs } from 'react-breadcrumbs';
 import { Switch } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { CrumbRoute, Route, LanguageSwitcher, ValidateRoutes } from 'o2web-react-core';
 
 import NavLayout from './NavLayout';
@@ -19,7 +20,7 @@ import EditAccount from '../user/forms/EditAccount';
 import NotFound from '../pages/NotFound';
 
 // assets
-import logo from '../../../assets/images/logo.svg';
+// import logo from '../../../assets/images/logo.svg';
 
 function PrimaryLayout() {
   return (
@@ -27,12 +28,34 @@ function PrimaryLayout() {
       <header className="app-header">
         <LanguageSwitcher />
         <NavLayout />
-        <img src={logo} className="app-logo" alt="logo" width="200" />
+        {/* <img src={logo} className="app-logo" alt="logo" width="200" /> */}
         <h1 className="app-title">React Vanille</h1>
       </header>
       <main>
         <Breadcrumbs />
         <ValidateRoutes notFoundPath="/en/notFound">
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Redirect
+                push
+                to="/en"
+              />
+            )}
+          />
+          <Route exact path="/en" component={HomePage} />
+          <CrumbRoute exact path="/en/about" title="about" component={AboutPage} />
+          <CrumbRoute
+            path="/en/artworks"
+            title="artworks"
+            render={({ match }) =>
+              <Switch>
+                <Route exact path={match.url} component={Artworks} />
+                <CrumbRoute path={`${match.url}/:artworkId`} title="artwork" component={Artwork} />
+              </Switch>
+            }
+          />
           <Route exact path="/en" component={HomePage} />
           <CrumbRoute exact path="/en/about" title="about" component={AboutPage} />
           <CrumbRoute

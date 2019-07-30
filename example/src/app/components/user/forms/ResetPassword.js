@@ -10,7 +10,7 @@ import validate from '../../forms/validate/validate';
 import actions from '../../../actions/user/';
 
 // Styles
-import './styles.scss';
+// import './styles.scss';
 
 class ResetPasswordForm extends Component {
   static propTypes = {

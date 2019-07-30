@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styles
-import '../Fields.scss';
-import './Textarea.scss';
+// import '../Fields.scss';
+// import './Textarea.scss';
 
 function Textarea(field, { t }) {
   const originalError = field.meta.error;

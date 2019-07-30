@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 // Styles
-import '../Fields.scss';
-import './Radio.scss';
+// import '../Fields.scss';
+// import './Radio.scss';
 
 const Radio = (field, { t }) => (
   <div className="field">

@@ -16,10 +16,11 @@ export default function (ComposedComponent, authRequired = true) {
 
     static contextTypes = {
       t: PropTypes.func,
+      response: PropTypes.object,
     };
 
-    componentWillMount() {
-      window.scrollTo(0, 0);
+    componentDidMount() {
+      if (window) window.scrollTo(0, 0);
       this.validateLocation();
     }
 
@@ -29,7 +30,7 @@ export default function (ComposedComponent, authRequired = true) {
 
     validateLocation() {
       const { authenticated, history, validatingToken, location: { pathname } } = this.props;
-      const { t } = this.context;
+      const { response, t } = this.context;
 
       if (!validatingToken) {
         const accountRoute = translateRoute('/en/account', t);
@@ -37,9 +38,17 @@ export default function (ComposedComponent, authRequired = true) {
 
         // redirect to login if user is not authenticated
         if (authenticated && !authRequired && pathname !== accountRoute) {
-          history.push(accountRoute);
+          if (response) {
+            response.redirect(accountRoute);
+          } else {
+            history.push(accountRoute);
+          }
         } else if (!authenticated && authRequired && pathname !== signInRoute) {
-          history.push(signInRoute);
+          if (response) {
+            response.redirect(signInRoute);
+          } else {
+            history.push(signInRoute);
+          }
         }
       }
     }

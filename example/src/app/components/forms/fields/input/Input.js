@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styles
-import '../Fields.scss';
-import './Input.scss';
+// import '../Fields.scss';
+// import './Input.scss';
 
 function Input(field, { t }) {
   const originalError = field.meta.error;
