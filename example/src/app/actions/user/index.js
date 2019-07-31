@@ -1,7 +1,8 @@
-import { asyncMutation, graphQLClient } from 'o2web-react-core';
 import queries from './queries';
 import types from './types';
 import store from '../../../config/redux/store';
+import client from '../../../config/graphql/client';
+import { asyncMutation } from '../../../config/graphql/async-action-creator';
 
 export default {
   signIn: (variables) => asyncMutation(
@@ -9,14 +10,14 @@ export default {
     types.SIGN_IN,
     queries.signIn,
     variables,
-    graphQLClient,
+    client,
   ),
   signUp: (variables) => asyncMutation(
     store,
     types.SIGN_UP,
     queries.signUp,
     variables,
-    graphQLClient,
+    client,
   ),
   signOut: () => {
     if (window) localStorage.removeItem('token');
@@ -29,28 +30,28 @@ export default {
     types.UPDATE_ACCOUNT,
     queries.updateAccount,
     variables,
-    graphQLClient,
+    client,
   ),
   resetPassword: (variables) => asyncMutation(
     store,
     types.RESET_PASSWORD,
     queries.resetPassword,
     variables,
-    graphQLClient,
+    client,
   ),
   forgotPassword: (variables) => asyncMutation(
     store,
     types.FORGOT_PASSWORD,
     queries.forgotPassword,
     variables,
-    graphQLClient,
+    client,
   ),
   validateToken: (variables) => asyncMutation(
     store,
     types.VALIDATE_TOKEN,
     queries.validateToken,
     variables,
-    graphQLClient,
+    client,
   ),
   validateNoToken: () => ({
     type: types.VALIDATE_NO_TOKEN,

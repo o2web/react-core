@@ -17,6 +17,15 @@ class Artworks extends Component {
   static propTypes = propTypes;
   static defaultProps = {};
 
+  constructor(props, { initialRender }) {
+    super(props);
+    console.log(initialRender);
+    if (initialRender) {
+      console.log('lskdfl');
+      this.fetchArtworks();
+    }
+  }
+
   componentWillMount() {
     const { fetchArtworks } = this.props;
     fetchArtworks({ limit: 10 });

@@ -3,7 +3,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
 import { withRouter } from 'react-router-dom';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 class GAListener extends Component {
   constructor() {

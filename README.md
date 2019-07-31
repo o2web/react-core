@@ -283,6 +283,15 @@ npm install
 npm start
 ```
 
+Run server build
+
+To run the server build update `package.json` at the root of the project to point to the server build.
+
+```
+"ssr:serve": "nodemon -r dotenv/config ./example/build/server.js",
+```
+
+
 ### Javascript Linting
 
 This package uses [ESLint](https://github.com/eslint/eslint) with [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
