@@ -19,9 +19,7 @@ class Artworks extends Component {
 
   constructor(props, { initialRender }) {
     super(props);
-    console.log(initialRender);
     if (initialRender) {
-      console.log('lskdfl');
       this.fetchArtworks();
     }
   }

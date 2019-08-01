@@ -21,8 +21,10 @@ global.document = { createElement: () => {} };
 const PORT = process.env.PORT || 80;
 const app = express();
 
-app.use('/static', express.static('build/static'));
-app.use('/build', express.static('build'));
+app.use('/example/static', express.static('build/static'));
+app.use('/example/build', express.static('build'));
+
+console.log('initialState');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));

@@ -27,7 +27,7 @@
     "memory-cache": "^0.2.0",
     "node-fetch": "^2.3.0",
     "node-sass": "^4.10.0",
-    "o2web-react-core": "0.3.1",
+    "o2web-react-core": "file:..",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -69,7 +69,7 @@
     "static:build": "react-app-rewired build",
     "static:start": "react-app-rewired start",
     "ssr:build": "webpack --config webpack.server.config.js",
-    "ssr:serve": "nodemon -r dotenv/config ./example/build/server.js",
+    "ssr:serve": "nodemon -r dotenv/config ./build/server.js",
     "ssr:watch": "webpack --watch --config webpack.server.config.js",
     "heroku-postbuild": "npm run static:build && npm run ssr:build",
     "start:ssr": "npm run static:build && npm run ssr:build && npm-run-all -p ssr:serve ssr:watch",
@@ -79,6 +79,12 @@
     "eject": "react-scripts eject",
     "start-js": "react-scripts start",
     "lint": "jshint .",
-    "validate": "npm ls"
-  }
+    "validate": "npm ls",
+    "prestart": "node ./src/config/graphql/tasks/build-schema.js"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

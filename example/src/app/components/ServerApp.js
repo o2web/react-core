@@ -16,12 +16,15 @@ class App extends Component {
   static propTypes = {
     request: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
-    initialRender: PropTypes.bool.isRequired,
+    initialRender: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    initialRender: false,
   };
 
   getChildContext() {
     const { response, initialRender } = this.props;
-
     return {
       initialRender,
       translations,
@@ -34,7 +37,6 @@ class App extends Component {
 
   render() {
     const { request } = this.props;
-
     return (
       <I18n translations={translations} initialLang={defaultLanguage}>
         <CookiesProvider>
