@@ -20,6 +20,7 @@ class Artworks extends Component {
   constructor(props, { initialRender }) {
     super(props);
     if (initialRender) {
+      console.log('wtf ça marche');
       this.fetchArtworks();
     }
   }

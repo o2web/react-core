@@ -15,12 +15,17 @@ class BaseRoute extends Component {
 
   setLanguageFromUrl({ pathname }) {
     const { history, dispatch, lang } = this.props;
-    const { cookies, availableLanguages, defaultLanguage } = this.context;
+    const { cookies, availableLanguages, defaultLanguage, response } = this.context;
     const language = pathname.split('/').filter(Boolean)[0];
     const isAvailableLanguage = availableLanguages.includes(language);
 
     if (!isAvailableLanguage) {
-      history.push(`/${cookies.get('lang') || defaultLanguage}`);
+      if (response) {
+        response.redirect(`/${cookies.get('lang') || defaultLanguage}`);
+      } else {
+        history.push(`/${cookies.get('lang') || defaultLanguage}`);
+      }
+
       dispatch(setLanguage(cookies.get('lang') || defaultLanguage));
     } else if (lang !== language) {
       dispatch(setLanguage(language));
@@ -46,6 +51,7 @@ BaseRoute.contextTypes = {
   availableLanguages: PropTypes.array,
   defaultLanguage: PropTypes.string,
   cookies: PropTypes.object,
+  response: PropTypes.object,
 };
 
 BaseRoute.propTypes = {
