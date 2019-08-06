@@ -12,7 +12,7 @@ import translations, {
 import '../../assets/styles/app.scss';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
-class App extends Component {
+class ServerApp extends Component {
   static propTypes = {
     request: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
@@ -59,7 +59,7 @@ class App extends Component {
   }
 }
 
-App.childContextTypes = {
+ServerApp.childContextTypes = {
   initialRender: PropTypes.bool,
   translations: PropTypes.object.isRequired,
   availableLanguages: PropTypes.array.isRequired,
@@ -68,4 +68,4 @@ App.childContextTypes = {
   ssr: PropTypes.bool.isRequired,
 };
 
-export default App;
+export default ServerApp;

@@ -23,6 +23,7 @@ class DemoForm extends Component {
 
     return (
       <form onSubmit={submitForm} className="form--demo">
+        <h2>test</h2>
         <Field
           name="firstName"
           component={Input}

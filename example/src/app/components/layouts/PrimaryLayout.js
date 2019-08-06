@@ -56,19 +56,6 @@ function PrimaryLayout() {
               </Switch>
             }
           />
-          <Route exact path="/en" component={HomePage} />
-          <CrumbRoute exact path="/en/about" title="about" component={AboutPage} />
-          <CrumbRoute
-            path="/en/artworks"
-            title="artworks"
-            hasChildren
-            render={({ match }) =>
-              <Switch>
-                <Route exact path={match.url} component={Artworks} />
-                <CrumbRoute path={`${match.url}/:artworkId`} title="artwork" component={Artwork} />
-              </Switch>
-            }
-          />
 
           <CrumbRoute exact path="/en/demo" title="demo" component={DemoForm} />
 

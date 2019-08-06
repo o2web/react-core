@@ -2,13 +2,12 @@ const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 module.exports = {
   target: 'node',
   entry: './server/index.js',
   output: {
     path: path.resolve(__dirname, 'build/'),
-    publicPath: '/build/',
+    publicPath: './build/',
     filename: 'server.js',
     library: 'app',
     libraryTarget: 'commonjs2',
