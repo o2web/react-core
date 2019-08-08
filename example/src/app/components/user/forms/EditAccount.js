@@ -10,9 +10,6 @@ import validate from '../../forms/validate/validate';
 
 import actions from '../../../actions/user/';
 
-// Styles
-// import './styles.scss';
-
 class EditAccountForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,

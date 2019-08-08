@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 // Styles
-// import '../Fields.scss';
-// import './Checkbox.scss';
+import '../Fields.scss';
+import './Checkbox.scss';
 
 const Checkbox = (field, { t }) => (
   <div className="field">

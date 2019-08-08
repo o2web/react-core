@@ -10,9 +10,6 @@ import validate from '../../forms/validate/validate';
 
 import actions from '../../../actions/user/';
 
-// Styles
-// import './styles.scss';
-
 class ForgotPasswordForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,

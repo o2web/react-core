@@ -2,14 +2,9 @@ import fetch from 'node-fetch';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloLink, concat } from 'apollo-link';
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-import introspectionQueryResultData from './tasks/fragment-types.json';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData,
-});
-
-const cache = new InMemoryCache({ fragmentMatcher });
+const cache = new InMemoryCache();
 const httpLink = createHttpLink({ uri: process.env.REACT_APP_API_URL, fetch });
 
 const authMiddleware = new ApolloLink((operation, forward) => {

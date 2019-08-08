@@ -8,9 +8,6 @@ import { NavLink } from 'o2web-react-core';
 // Actions
 import actions from '../../../actions/user';
 
-// Styles
-// import './styles.scss';
-
 function MyAccount({ email, signOut }, { t }) {
   const userName = email.split('@').join('\u200b@');
 
