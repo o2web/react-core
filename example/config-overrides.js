@@ -14,7 +14,7 @@ module.exports = function override(config, env) {
   };
 
   // rewire Sass
-  newConfig = rewireSass(config, env);
+  newConfig = rewireSass(newConfig, env);
 
   // rewireEslint
   newConfig = rewireEslint(newConfig, env);

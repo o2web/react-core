@@ -20,7 +20,12 @@ export default {
     client,
   ),
   signOut: () => {
-    if (window) localStorage.removeItem('token');
+    if (window) {
+      localStorage.removeItem('Authorization');
+      localStorage.removeItem('Expires');
+      localStorage.removeItem('RefreshToken');
+      localStorage.removeItem('token');
+    }
     return {
       type: types.SIGN_OUT,
     };

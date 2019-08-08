@@ -79,8 +79,7 @@
     "eject": "react-scripts eject",
     "start-js": "react-scripts start",
     "lint": "jshint .",
-    "validate": "npm ls",
-    "prestart": "node ./src/config/graphql/tasks/build-schema.js"
+    "validate": "npm ls"
   },
   "pre-commit": [
     "lint",

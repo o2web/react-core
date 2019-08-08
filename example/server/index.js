@@ -15,14 +15,10 @@ import SSR_RESET_TYPE from '../src/config/redux/reset';
 global.window = false;
 global.document = false;
 
-// soundcloud player hotfix
-global.document = { createElement: () => {} };
-
 const PORT = process.env.PORT || 80;
 const app = express();
 
 app.use('/static', express.static('build/static'));
-app.use('/build', express.static('build'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
