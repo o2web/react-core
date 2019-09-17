@@ -26,7 +26,7 @@ export function asyncQuery(
     })
       .then((response) => {
         const payload = response.data;
-        const data = Object.values(payload)[0] || {};
+        const data = (payload.length > 0) ? Object.values(payload)[0] : {};
 
         const errors = data.errors || [];
         const responseType = response.errors || errors.length > 0 ? fail : success;
@@ -61,7 +61,7 @@ export function asyncMutation(
     })
       .then((response) => {
         const payload = response.data;
-        const data = Object.values(payload)[0] || {};
+        const data = (payload.length > 0) ? Object.values(payload)[0] : {};
 
         const errors = data.errors || [];
         const responseType = response.errors || errors.length > 0 ? fail : success;
