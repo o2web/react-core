@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import { stopSubmit } from 'redux-form';
 import baseClient from './client';
+import actions from '../../app/actions/promises';
 
 const success = 'SUCCESS';
 const fail = 'FAIL';
@@ -18,7 +19,7 @@ export function asyncQuery(
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    return client.query({
+    const promise = client.query({
       query: gql(query),
       fetchPolicy: 'network-only',
       errorPolicy: 'all',
@@ -35,8 +36,12 @@ export function asyncQuery(
       })
       .catch((errors) => {
         dispatch({ type: `${type}_${fail}` });
-        window.console.log(errors);
+        if (window) window.console.log(errors);
       });
+
+    store.dispatch(actions.addPromise(promise));
+
+    return promise;
   };
 }
 
@@ -53,7 +58,7 @@ export function asyncMutation(
     const locale = { locale: store.getState().i18nState.lang };
     const client = customClient || baseClient;
 
-    return client.mutate({
+    const promise = client.mutate({
       mutation: gql(mutation),
       fetchPolicy: 'no-cache',
       variables: { ...locale, ...params },
@@ -92,7 +97,11 @@ export function asyncMutation(
       })
       .catch((errors) => {
         dispatch({ type: `${type}_${fail}` });
-        window.console.log(errors);
+        if (window) window.console.log(errors);
       });
+
+    store.dispatch(actions.addPromise(promise));
+
+    return promise;
   };
 }

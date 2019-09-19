@@ -10,7 +10,7 @@ import translations, {
   availableLanguages,
   defaultLanguage,
 } from '../../config/locales/translations';
-import './../../assets/styles/app.scss';
+import '../../assets/styles/app.scss';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
 class App extends Component {
@@ -19,6 +19,8 @@ class App extends Component {
       translations,
       availableLanguages,
       defaultLanguage,
+      ssr: false,
+      initialRender: false,
     };
   }
 
@@ -31,6 +33,7 @@ class App extends Component {
             <title>O2 Web React Core</title>
             <link rel="canonical" href="" />
             <meta name="description" content="" />
+            <meta name="google-site-verification" content="" />
             <meta name="keywords" content="" />
 
             {/* Opengraph */}
@@ -70,6 +73,8 @@ App.childContextTypes = {
   translations: PropTypes.object.isRequired,
   availableLanguages: PropTypes.array.isRequired,
   defaultLanguage: PropTypes.string.isRequired,
+  ssr: PropTypes.bool.isRequired,
+  initialRender: PropTypes.bool.isRequired,
 };
 
 export default App;

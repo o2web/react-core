@@ -1,7 +1,8 @@
-import { asyncQuery, graphQLClient } from 'o2web-react-core';
 import queries from './queries';
 import types from './types';
 import store from '../../../config/redux/store';
+import client from '../../../config/graphql/client';
+import { asyncQuery } from '../../../config/graphql/async-action-creator';
 
 export default {
   fetchArtwork: (variables) => asyncQuery(
@@ -9,13 +10,13 @@ export default {
     types.FETCH_ARTWORK,
     queries.fetchArtwork,
     variables,
-    graphQLClient,
+    client,
   ),
   fetchArtworks: (variables) => asyncQuery(
     store,
     types.FETCH_ARTWORKS,
     queries.fetchArtworks,
     variables,
-    graphQLClient,
+    client,
   ),
 };

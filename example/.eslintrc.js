@@ -15,5 +15,6 @@ module.exports = {
     "react/forbid-prop-types": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/label-has-for": "off",
+    "no-underscore-dangle": "off",
   }
 };

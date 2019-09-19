@@ -9,9 +9,6 @@ import Checkbox from './fields/checkbox/Checkbox';
 import Textarea from './fields/textarea/Textarea';
 import validate from './validate/validate';
 
-// Styles
-import './Demo.scss';
-
 class DemoForm extends Component {
   static handleFormSubmit(values) {
     alert(JSON.stringify(values, null, 4));
