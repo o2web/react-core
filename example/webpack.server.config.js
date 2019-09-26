@@ -7,7 +7,7 @@ module.exports = {
   entry: './server/index.js',
   output: {
     path: path.resolve(__dirname, 'build/'),
-    publicPath: './build/',
+    publicPath: '/build/',
     filename: 'server.js',
     library: 'app',
     libraryTarget: 'commonjs2',
@@ -22,7 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
