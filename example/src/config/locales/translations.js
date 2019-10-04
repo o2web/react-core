@@ -7,7 +7,7 @@ const translations = {
   en: parse(en),
 };
 
-export const defaultLanguage = 'fr';
+export const defaultLanguage = process.env.REACT_APP_REGION_DEFAULT_LOCALE;
 export const availableLanguages = Object.keys(translations);
 
 export default translations;
