@@ -5,12 +5,15 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+// propTypes
+import ArtworkPropTypes from './propTypes/Artwork';
+
 // actions
 import actions from '../../actions/artworks/index';
 
 const propTypes = {
   fetchArtworks: PropTypes.func.isRequired,
-  artworks: PropTypes.array.isRequired,
+  artworks: PropTypes.arrayOf(ArtworkPropTypes).isRequired,
   match: PropTypes.object.isRequired,
 };
 

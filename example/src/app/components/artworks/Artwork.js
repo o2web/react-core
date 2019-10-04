@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+// propTypes
+import ArtworkPropTypes from './propTypes/Artwork';
+
 // actions
 import actions from '../../actions/artworks/index';
 
 const propTypes = {
   fetchArtwork: PropTypes.func.isRequired,
-  artwork: PropTypes.object.isRequired,
+  artwork: ArtworkPropTypes.isRequired,
   match: PropTypes.object.isRequired,
 };
 
