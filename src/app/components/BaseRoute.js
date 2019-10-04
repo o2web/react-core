@@ -29,7 +29,9 @@ class BaseRoute extends Component {
       dispatch(setLanguage(cookies.get('lang') || defaultLanguage));
     } else if (lang !== language) {
       dispatch(setLanguage(language));
-      cookies.set('lang', language, { path: '/' });
+      cookies.set('lang', language, {
+        path: `/${process.env.REACT_APP_REGION_DEFAULT_LOCALE}`,
+      });
     }
   }
 
