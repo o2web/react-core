@@ -11,7 +11,7 @@ import actions from '../../actions/artworks/index';
 
 const propTypes = {
   fetchArtwork: PropTypes.func.isRequired,
-  artwork: PropTypes.instanceOf(ArtworkPropTypes).isRequired,
+  artwork: ArtworkPropTypes.isRequired,
   match: PropTypes.object.isRequired,
 };
 
