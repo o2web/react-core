@@ -31,4 +31,31 @@ export function asyncGet(
   };
 }
 
+export function asyncPost(
+  store,
+  type,
+  query,
+  params,
+) {
+  return (dispatch) => {
+    dispatch({ type });
+
+    const promise = axios.post(`${process.env.REACT_APP_REST_API_URL}${query}`, params)
+      .then(response => {
+        const payload = response.data;
+        dispatch({ type: `${type}_${success}`, payload });
+
+        return payload;
+      })
+      .catch((errors) => {
+        dispatch({ type: `${type}_${fail}` });
+        if (window) window.console.log(errors);
+      });
+
+    store.dispatch(actions.addPromise(promise));
+
+    return promise;
+  };
+}
+
 export default asyncGet;
