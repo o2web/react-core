@@ -11,6 +11,8 @@ import translations, {
   defaultLanguage,
 } from '../../config/locales/translations';
 import '../../assets/styles/app.scss';
+
+import CacheBuster from './helpers/CacheBuster';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
 class App extends Component {
@@ -26,45 +28,56 @@ class App extends Component {
 
   render() {
     return (
-      <I18n translations={translations} initialLang={defaultLanguage}>
-        <CookiesProvider>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <title>O2 Web React Core</title>
-            <link rel="canonical" href="" />
-            <meta name="description" content="" />
-            <meta name="google-site-verification" content="" />
-            <meta name="keywords" content="" />
+      <CacheBuster>
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+          if (loading) return null;
+          if (!loading && !isLatestVersion) {
+            refreshCacheAndReload();
+          }
 
-            {/* Opengraph */}
-            <meta property="og:title" content="" />
-            <meta property="og:type" content="" />
-            <meta property="og:url" content={window.location.href} />
-            <meta property="og:description" content="" />
-            <meta property="og:image" content="" />
+          return (
+            <I18n translations={translations} initialLang={defaultLanguage}>
+              <CookiesProvider>
+                <Helmet>
+                  <meta charSet="utf-8" />
+                  <title>O2 Web React Core</title>
+                  <link rel="canonical" href="" />
+                  <meta name="description" content="" />
+                  <meta name="google-site-verification" content="" />
+                  <meta name="keywords" content="" />
 
-            {/* Twitter */}
-            <meta name="twitter:site" content="" />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="" />
-            <meta name="twitter:description" content="" />
-            <meta name="twitter:image" content="" />
-          </Helmet>
-          <BrowserRouter>
-            <GAListener>
-              <Route
-                path="/"
-                render={(props) =>
-                  <BaseRoute
-                    {...props}
-                    component={PrimaryLayout}
-                  />
-                }
-              />
-            </GAListener>
-          </BrowserRouter>
-        </CookiesProvider>
-      </I18n>
+                  {/* Opengraph */}
+                  <meta property="og:title" content="" />
+                  <meta property="og:type" content="" />
+                  <meta property="og:url" content={window.location.href} />
+                  <meta property="og:description" content="" />
+                  <meta property="og:image" content="" />
+
+                  {/* Twitter */}
+                  <meta name="twitter:site" content="" />
+                  <meta name="twitter:card" content="summary" />
+                  <meta name="twitter:title" content="" />
+                  <meta name="twitter:description" content="" />
+                  <meta name="twitter:image" content="" />
+                </Helmet>
+                <BrowserRouter>
+                  <GAListener>
+                    <Route
+                      path="/"
+                      render={(props) => (
+                        <BaseRoute
+                          {...props}
+                          component={PrimaryLayout}
+                        />
+                      )}
+                    />
+                  </GAListener>
+                </BrowserRouter>
+              </CookiesProvider>
+            </I18n>
+          );
+        }}
+      </CacheBuster>
     );
   }
 }
