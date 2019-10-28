@@ -1,8 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import packageJson from '../../../../package.json';
-
-global.appVersion = packageJson.version;
 
 // version from response - first param, local version second param
 const semverGreaterThan = (versionA, versionB) => {

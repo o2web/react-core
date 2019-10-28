@@ -1,6 +1,10 @@
+import packageJson from './package.json';
+
 const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+global.appVersion = packageJson.version;
 
 module.exports = {
   target: 'node',
