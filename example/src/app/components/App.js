@@ -4,7 +4,7 @@ import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { BaseRoute, GAListener } from 'o2web-react-core';
+import { BaseRoute, CacheBuster, GAListener } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
@@ -12,7 +12,6 @@ import translations, {
 } from '../../config/locales/translations';
 import '../../assets/styles/app.scss';
 
-import CacheBuster from './helpers/CacheBuster';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
 class App extends Component {

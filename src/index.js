@@ -1,4 +1,5 @@
 import BaseRoute from './app/components/BaseRoute';
+import CacheBuster from './app/components/helpers/CacheBuster';
 import CrumbRoute from './app/components/router/CrumbRoute';
 import LanguageSwitcher from './app/components/router/LanguageSwitcher';
 import GAListener from './app/components/router/GAListener';
@@ -9,6 +10,7 @@ import ValidateRoutes from './app/components/router/ValidateRoutes';
 
 export {
   BaseRoute,
+  CacheBuster,
   CrumbRoute,
   LanguageSwitcher,
   GAListener,
