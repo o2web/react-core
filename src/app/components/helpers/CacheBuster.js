@@ -44,18 +44,22 @@ class CacheBuster extends Component {
       .then((response) => response.json())
       .then((meta) => {
         const latestVersion = meta.version;
-        const currentVersion = global.appVersion;
+        const currentVersion = window.APP_VERSION;
 
-        const shouldForceRefresh = semverGreaterThan(latestVersion, currentVersion);
-        if (shouldForceRefresh) {
-          console.log(`We have a new version - ${latestVersion}. Should force refresh`);
-          this.setState({ loading: false, isLatestVersion: false });
-        } else {
-          console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
-          this.setState({ loading: false, isLatestVersion: true });
+        if (latestVersion && currentVersion) {
+          const shouldForceRefresh = semverGreaterThan(latestVersion, currentVersion);
+          if (shouldForceRefresh) {
+            console.log(`We have a new version - ${latestVersion}. Should force refresh`);
+            this.setState({ loading: false, isLatestVersion: false });
+          } else {
+            console.log(`You already have the latest version - ${latestVersion}. No cache refresh needed.`);
+            this.setState({ loading: false, isLatestVersion: true });
+          }
         }
+      })
+      .catch((errors) => {
+        if (window) window.console.log(errors);
       });
-    // TODO: Add error catching if file is not found
   }
 
   render() {
