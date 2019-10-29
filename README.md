@@ -262,6 +262,8 @@ This package uses [redux-cookie](https://github.com/reactivestack/cookies)
 
 ### CacheBuster
 
+> [This article](https://dev.to/flexdinesh/cache-busting-a-react-app-22lk) was used to create the CacheBuster component.
+
 React apps can sometimes get stuck on the client's side cache (ex: when the app is added to the phone's homepage). You can use the CacheBuster component to help refresh the app. Here are the steps to help you set it up.
 
 * Copy the `generate-build-version.js` script to your app folder
@@ -275,7 +277,12 @@ React apps can sometimes get stuck on the client's side cache (ex: when the app 
     [...]
 },
 ```
-* Add the CacheBuster component in the root component of your App (generally `src/app/components/App.js`) and send it the 
+* Create a symlink to package.json in the `src` folder of your app `ln -s package.json src/package.alias.json` (you can't access files outside the `src` folder from your app).
+* In the root component of your App (generally `src/app/components/App.js`), 
+  * Fetch the version from the `package.alias.json`, 
+  * Add the CacheBuster component around your app code
+  * Send the current version to the CacheBuster as a props
+* The CacheBuster will now compare the current version, from `package.json`, which should be cached, and the current build version, from the `generate-build-version.js`, which should not be cached, because we fetch it asynchronously and browsers don't cache XHR requests.
 
 
 ## Advanced usage
