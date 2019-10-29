@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { StaticRouter, Route } from 'react-router-dom';
-import { BaseRoute, GAListener } from 'o2web-react-core';
+import { BaseRoute, CacheBuster, GAListener } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
   defaultLanguage,
 } from '../../config/locales/translations';
-import '../../assets/styles/app.scss';
+import { version } from '../../package.alias.json';
 import PrimaryLayout from './layouts/PrimaryLayout';
+
+// styles
+import '../../assets/styles/app.scss';
 
 class ServerApp extends Component {
   static propTypes = {
@@ -38,23 +41,34 @@ class ServerApp extends Component {
   render() {
     const { request } = this.props;
     return (
-      <I18n translations={translations} initialLang={defaultLanguage}>
-        <CookiesProvider>
-          <StaticRouter location={request.url} context={{}}>
-            <GAListener>
-              <Route
-                path="/"
-                render={(props) =>
-                  <BaseRoute
-                    {...props}
-                    component={PrimaryLayout}
-                  />
-                }
-              />
-            </GAListener>
-          </StaticRouter>
-        </CookiesProvider>
-      </I18n>
+      <CacheBuster version={version}>
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+          if (loading) return null;
+          if (!loading && !isLatestVersion) {
+            refreshCacheAndReload();
+          }
+
+          return (
+            <I18n translations={translations} initialLang={defaultLanguage}>
+              <CookiesProvider>
+                <StaticRouter location={request.url} context={{}}>
+                  <GAListener>
+                    <Route
+                      path="/"
+                      render={(props) => (
+                        <BaseRoute
+                          {...props}
+                          component={PrimaryLayout}
+                        />
+                      )}
+                    />
+                  </GAListener>
+                </StaticRouter>
+              </CookiesProvider>
+            </I18n>
+          );
+        }}
+      </CacheBuster>
     );
   }
 }

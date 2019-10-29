@@ -29,12 +29,11 @@ class CacheBuster extends Component {
         if (caches) {
           // Service worker cache should be cleared with caches.delete()
           caches.keys().then((names) => {
-            names.map(cache => caches.delete(cache));
+            // delete browser cache and hard reload
+            Promise.all((names.map(cache => caches.delete(cache))))
+              .then(() => window.location.reload());
           });
         }
-
-        // delete browser cache and hard reload
-        window.location.reload();
       },
     };
   }
@@ -43,8 +42,8 @@ class CacheBuster extends Component {
     fetch('/static/meta.json')
       .then((response) => response.json())
       .then((meta) => {
+        const { version: currentVersion } = this.props;
         const latestVersion = meta.version;
-        const currentVersion = window.APP_VERSION;
 
         if (latestVersion && currentVersion) {
           const shouldForceRefresh = semverGreaterThan(latestVersion, currentVersion);
@@ -72,6 +71,7 @@ class CacheBuster extends Component {
 
 CacheBuster.propTypes = {
   children: PropTypes.func.isRequired,
+  version: PropTypes.string.isRequired,
 };
 
 export default CacheBuster;

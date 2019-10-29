@@ -17,14 +17,14 @@ npm install --save o2web-react-core
 // using ES6 modules
 import {
   BaseRoute,
+  CacheBuster,
   CrumbRoute,
   LanguageSwitcher,
+  GAListener,
   NavLink,
   Route,
   translateRoute,
-  asyncQuery,
-  asyncMutation,
-  graphQLClient,
+  ValidateRoutes,
 } from 'o2web-react-core';
 ```
 
@@ -258,6 +258,25 @@ export default connect(mapStateToProps)(reduxForm({
 This package uses [redux-cookie](https://github.com/reactivestack/cookies)
 
 `<CookiesProvider />` is defined in `/example/src/app/components/App.js` so `cookies` prop is available to children components
+
+
+### CacheBuster
+
+React apps can sometimes get stuck on the client's side cache (ex: when the app is added to the phone's homepage). You can use the CacheBuster component to help refresh the app. Here are the steps to help you set it up.
+
+* Copy the `generate-build-version.js` script to your app folder
+* Add the `generate-build-version` task to your app's `package.json` and call it with the prebuild hook. This will generate a meta.json file in your `static` folder.
+
+```
+"scripts": {
+    "generate-build-version": "node ./generate-build-version.js",
+    "pressr:build": "npm run generate-build-version",
+    "prestatic:build": "npm run generate-build-version"
+    [...]
+},
+```
+* Add the CacheBuster component in the root component of your App (generally `src/app/components/App.js`) and send it the 
+
 
 ## Advanced usage
 

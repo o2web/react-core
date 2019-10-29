@@ -5,6 +5,7 @@ import { CookiesProvider } from 'react-cookie';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { BaseRoute, CacheBuster, GAListener } from 'o2web-react-core';
+import { version } from '../../package.alias.json';
 
 import translations, {
   availableLanguages,
@@ -27,7 +28,7 @@ class App extends Component {
 
   render() {
     return (
-      <CacheBuster>
+      <CacheBuster version={version}>
         {({ loading, isLatestVersion, refreshCacheAndReload }) => {
           if (loading) return null;
           if (!loading && !isLatestVersion) {
