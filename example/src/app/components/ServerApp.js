@@ -9,7 +9,6 @@ import translations, {
   availableLanguages,
   defaultLanguage,
 } from '../../config/locales/translations';
-import { version } from '../../package.alias.json';
 import PrimaryLayout from './layouts/PrimaryLayout';
 
 // styles
@@ -40,8 +39,9 @@ class ServerApp extends Component {
 
   render() {
     const { request } = this.props;
+
     return (
-      <CacheBuster version={version}>
+      <CacheBuster>
         {({ loading, isLatestVersion, refreshCacheAndReload }) => {
           if (loading) return null;
           if (!loading && !isLatestVersion) {

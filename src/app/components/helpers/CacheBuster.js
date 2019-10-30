@@ -42,7 +42,7 @@ class CacheBuster extends Component {
     fetch('/static/meta.json')
       .then((response) => response.json())
       .then((meta) => {
-        const { version: currentVersion } = this.props;
+        const currentVersion = process.env.REACT_APP_CURRENT_APP_VERSION;
         const latestVersion = meta.version;
 
         if (latestVersion && currentVersion) {
