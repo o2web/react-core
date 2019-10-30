@@ -277,12 +277,9 @@ React apps can sometimes get stuck on the client's side cache (ex: when the app 
     [...]
 },
 ```
-* Create a symlink to package.json in the `src` folder of your app `ln -s package.json src/package.alias.json` (you can't access files outside the `src` folder from your app).
-* In the root component of your App (generally `src/app/components/App.js`), 
-  * Fetch the version from the `package.alias.json`, 
-  * Add the CacheBuster component around your app code
-  * Send the current version to the CacheBuster as a props
-* The CacheBuster will now compare the current version, from `package.json`, which should be cached, and the current build version, from the `generate-build-version.js`, which should not be cached, because we fetch it asynchronously and browsers don't cache XHR requests.
+* Add `REACT_APP_CURRENT_APP_VERSION` to your .env file.
+* In the root component of your App (generally `src/app/components/App.js`), add the CacheBuster component around your app code
+* The CacheBuster will now compare the current version, from your `.env` file, which should be cached, and the current build version, from the `generate-build-version.js`, which should not be cached, because we fetch it asynchronously and browsers don't cache XHR requests.
 
 
 ## Advanced usage
