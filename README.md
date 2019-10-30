@@ -277,9 +277,10 @@ React apps can sometimes get stuck on the client's side cache (ex: when the app 
     [...]
 },
 ```
-* Add `REACT_APP_CURRENT_APP_VERSION` to your .env file.
+* Add `REACT_APP_CURRENT_APP_VERSION=$npm_package_version` to your .env file.
 * In the root component of your App (generally `src/app/components/App.js`), add the CacheBuster component around your app code
 * The CacheBuster will now compare the current version, from your `.env` file, which should be cached, and the current build version, from the `generate-build-version.js`, which should not be cached, because we fetch it asynchronously and browsers don't cache XHR requests.
+
 
 
 ## Advanced usage
