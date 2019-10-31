@@ -78,6 +78,7 @@
     "ssr:serve": "nodemon -r dotenv/config ./build/server.js",
     "ssr:start": "npm run static:build && npm run ssr:build && npm run sitemap && npm-run-all -p ssr:serve ssr:watch",
     "ssr:watch": "webpack --watch --config webpack.server.config.js",
+    "prestart": "npm run generate-build-version",
     "start": "npm run static:start",
     "start-js": "react-scripts start",
     "prestatic:build": "npm run generate-build-version",

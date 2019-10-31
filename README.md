@@ -1,6 +1,6 @@
 # o2web-react-core
 
-[![NPM](https://img.shields.io/npm/v/o2web-react-core.svg)](https://www.npmjs.com/package/o2web-react-core) 
+[![NPM](https://img.shields.io/npm/v/o2web-react-core.svg)](https://www.npmjs.com/package/o2web-react-core)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
@@ -175,7 +175,7 @@ Translation keys can be nested
 ### Router
 
 This package uses [react-router v4](https://github.com/ReactTraining/react-router) to define translated routes.
-These routes must be named with their translations keys. 
+These routes must be named with their translations keys.
 
 Check `/example/src/config/locales/en/routes.js` for routes definitions
 
@@ -243,9 +243,9 @@ import Input from './fields/input/Input';
     type="text"
     placeholder="Your name..."
   />
-  
+
   ...
-        
+
 export default connect(mapStateToProps)(reduxForm({
   form: 'demo',
   enableReinitialize: true,
@@ -267,11 +267,12 @@ This package uses [redux-cookie](https://github.com/reactivestack/cookies)
 React apps can sometimes get stuck on the client's side cache (ex: when the app is added to the phone's homepage). You can use the CacheBuster component to help refresh the app. Here are the steps to help you set it up.
 
 * Copy the `generate-build-version.js` script to your app folder
-* Add the `generate-build-version` task to your app's `package.json` and call it with the prebuild hook. This will generate a meta.json file in your `static` folder.
+* Add the `generate-build-version` task to your app's `package.json` and call it with the prestart/prebuild hook. This will generate a meta.json file in your `static` folder.
 
 ```
 "scripts": {
     "generate-build-version": "node ./generate-build-version.js",
+    "prestart": "npm run generate-build-version",
     "pressr:build": "npm run generate-build-version",
     "prestatic:build": "npm run generate-build-version"
     [...]
