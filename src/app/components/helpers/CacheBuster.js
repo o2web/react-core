@@ -71,7 +71,6 @@ class CacheBuster extends Component {
 
 CacheBuster.propTypes = {
   children: PropTypes.func.isRequired,
-  version: PropTypes.string.isRequired,
 };
 
 export default CacheBuster;
