@@ -276,9 +276,13 @@ React apps can sometimes get stuck on the client's side cache (ex: when the app 
     "pressr:build": "npm run generate-build-version",
     "prestatic:build": "npm run generate-build-version"
     [...]
+    "static:build": "REACT_APP_CURRENT_APP_VERSION=$npm_package_version react-app-rewired build", # hosted on Heroku
+    "static:build": "react-app-rewired build", # not hosted on Heroku
+    [...]
 },
 ```
-* Add `REACT_APP_CURRENT_APP_VERSION=$npm_package_version` to your .env file.
+* If your app is hosted on Heroku, you must add this `REACT_APP_CURRENT_APP_VERSION=$npm_package_version` to the build and start script in package.json to include the current version in your build.
+* If your app is not hosted on Heroku, you can simply add `REACT_APP_CURRENT_APP_VERSION=$npm_package_version` to your .env file.
 * In the root component of your App (generally `src/app/components/App.js`), add the CacheBuster component around your app code
 * The CacheBuster will now compare the current version, from your `.env` file, which should be cached, and the current build version, from the `generate-build-version.js`, which should not be cached, because we fetch it asynchronously and browsers don't cache XHR requests.
 
