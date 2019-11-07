@@ -9,3 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CacheBuster component with documentation and example
 - CHANGELOG file
 - Updated .env.sample file
+
+## [0.7.0] - 2019-10-29
+### Added
+- Redirector component with documentation and example
+- CHANGELOG file

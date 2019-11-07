@@ -22,6 +22,7 @@ import {
   LanguageSwitcher,
   GAListener,
   NavLink,
+  Redirector,
   Route,
   translateRoute,
   ValidateRoutes,
@@ -218,6 +219,16 @@ Check `/example/src/app/components/layouts/PrimaryLayout.js` for automatic bread
 ```
 
 `<CrumbRoute />` can be used for translated routes
+
+### Redirects
+
+Update redirects array located at `/example/src/config/redirects/redirects.js`
+
+```js
+const redirects = [
+  { from: '/en/route', to: '/en/redirect-to' },
+];
+```
 
 ### SEO
 
