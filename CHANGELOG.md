@@ -14,3 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Redirector component with documentation and example
 - CHANGELOG file
+
+## [0.7.1] - 2019-10-29
+### Added
+- Fix some issues with Redirector
+- Add support for parent routes
+- CHANGELOG file
