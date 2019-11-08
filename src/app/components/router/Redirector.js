@@ -27,7 +27,6 @@ class Redirector extends Component {
           return false;
         });
       if (currentRouteRedirect) {
-        console.log(currentRouteRedirect);
         if (currentRouteRedirect.parent) {
           const newPath = pathname.replace(currentRouteRedirect.from, currentRouteRedirect.to);
           history.push(newPath);
@@ -41,10 +40,28 @@ class Redirector extends Component {
   componentDidUpdate() {
     const { redirects, history: { location: { pathname } }, history } = this.props;
     if (redirects.length !== 0) {
-      const currentRouteRedirect = redirects.find(
-        (path) => pathname.startsWith(path.from));
+      const currentRouteRedirect = redirects
+        .sort((x, y) => {
+          if (x.parent && y.parent) { return 0; }
+          if (!x.parent) { return -1; }
+          return 1;
+        })
+        .find((path) => {
+          if (path.parent && (pathname.startsWith(`${path.from}/`) || pathname.endsWith(path.from))) {
+            return path;
+          }
+          if (pathname === path.from) {
+            return path;
+          }
+          return false;
+        });
       if (currentRouteRedirect) {
-        history.push(currentRouteRedirect.to);
+        if (currentRouteRedirect.parent) {
+          const newPath = pathname.replace(currentRouteRedirect.from, currentRouteRedirect.to);
+          history.push(newPath);
+        } else {
+          history.push(currentRouteRedirect.to);
+        }
       }
     }
   }
