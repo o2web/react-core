@@ -4,7 +4,7 @@ import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { BaseRoute, CacheBuster, GAListener } from 'o2web-react-core';
+import { BaseRoute, CacheBuster, GAListener, GTManager } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
@@ -61,15 +61,17 @@ class App extends Component {
                 </Helmet>
                 <BrowserRouter>
                   <GAListener>
-                    <Route
-                      path="/"
-                      render={(props) => (
-                        <BaseRoute
-                          {...props}
-                          component={PrimaryLayout}
-                        />
-                      )}
-                    />
+                    <GTManager>
+                      <Route
+                        path="/"
+                        render={(props) => (
+                          <BaseRoute
+                            {...props}
+                            component={PrimaryLayout}
+                          />
+                        )}
+                      />
+                    </GTManager>
                   </GAListener>
                 </BrowserRouter>
               </CookiesProvider>

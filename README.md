@@ -237,6 +237,11 @@ This package uses [react-helmet](https://github.com/nfl/react-helmet) to manage 
 `<Helmet />` can be used in nested components. The most nested definition will be displayed in the page.
 Check `/example/src/app/components/App.js` for document head definition example
 
+### Tag Manager
+
+Add GTM ID in the .env file `REACT_APP_TAG_MANAGER_ID=GTM-000000`.
+Use `https://www.npmjs.com/package/react-gtm-module`.
+
 ### Forms
 
 This packages uses [redux-form](https://github.com/erikras/redux-form) for form definition
