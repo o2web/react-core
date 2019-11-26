@@ -21,15 +21,17 @@ class Redirector extends Component {
         })
         .find((path) => {
           if (path.parent && (pathname.startsWith(`${path.from}/`) || (pathname.endsWith(path.from) && pathname.startsWith(path.from)))) {
-            return false;
+            return path;
           }
           if (pathname === path.from) {
-            return false;
+            return path;
           }
           return false;
         });
       if (currentRouteRedirect) {
-        if (currentRouteRedirect.parent) {
+        if (currentRouteRedirect.external && window) {
+          window.location.href = currentRouteRedirect.to;
+        } else if (currentRouteRedirect.parent) {
           const newPath = pathname.replace(currentRouteRedirect.from, currentRouteRedirect.to);
           history.push(newPath);
         } else {
@@ -58,7 +60,9 @@ class Redirector extends Component {
           return false;
         });
       if (currentRouteRedirect) {
-        if (currentRouteRedirect.parent) {
+        if (currentRouteRedirect.external && window) {
+          window.location.href = currentRouteRedirect.to;
+        } else if (currentRouteRedirect.parent) {
           const newPath = pathname.replace(currentRouteRedirect.from, currentRouteRedirect.to);
           history.push(newPath);
         } else {
