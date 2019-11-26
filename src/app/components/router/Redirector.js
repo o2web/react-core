@@ -3,6 +3,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import 'core-js/es6/string';
+import 'core-js/es6/regexp';
 
 // components
 
@@ -47,7 +49,7 @@ class Redirector extends Component {
           return 1;
         })
         .find((path) => {
-          if (path.parent && (pathname.startsWith(`${path.from}/`) || (pathname.endsWith(path.from) && pathname.startsWith(path.from)))) {
+          if (path.parent && (pathname.startsWith(`${path.from}/`) || pathname.endsWith(path.from))) {
             return path;
           }
           if (pathname === path.from) {
