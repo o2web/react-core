@@ -21,10 +21,10 @@ class Redirector extends Component {
         })
         .find((path) => {
           if (path.parent && (pathname.startsWith(`${path.from}/`) || (pathname.endsWith(path.from) && pathname.startsWith(path.from)))) {
-            return path;
+            return false;
           }
           if (pathname === path.from) {
-            return path;
+            return false;
           }
           return false;
         });
@@ -49,7 +49,7 @@ class Redirector extends Component {
           return 1;
         })
         .find((path) => {
-          if (path.parent && (pathname.startsWith(`${path.from}/`) || pathname.endsWith(path.from))) {
+          if (path.parent && (pathname.startsWith(`${path.from}/`) || (pathname.endsWith(path.from) && pathname.startsWith(path.from)))) {
             return path;
           }
           if (pathname === path.from) {
