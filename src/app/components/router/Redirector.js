@@ -47,7 +47,7 @@ class Redirector extends Component {
           return 1;
         })
         .find((path) => {
-          if (path.parent && (pathname.startsWith(`${path.from}/`) || pathname.endsWith(path.from))) {
+          if (path.parent && (pathname.startsWith(`${path.from}/`) || (pathname.endsWith(path.from) && pathname.startsWith(path.from)))) {
             return path;
           }
           if (pathname === path.from) {
