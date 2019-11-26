@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix some issues with IE 11
 - CHANGELOG file
 
-## [0.8.3] - 2019-10-29
+## [0.8.5] - 2019-10-29
 ### Added
 - Fix issue with some redirect patterns
 - CHANGELOG file
