@@ -30,3 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Resolve issue that made redirection loop
 - CHANGELOG file
+
+## [0.8.2] - 2019-10-29
+### Added
+- Add some polyfills
+- CHANGELOG file
