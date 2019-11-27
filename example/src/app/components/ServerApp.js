@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { StaticRouter, Route } from 'react-router-dom';
-import { GAListener, GTManager } from 'o2web-react-core';
+import { GAListener, GTManager, CacheBuster } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
@@ -42,25 +42,36 @@ class ServerApp extends Component {
   render() {
     const { request } = this.props;
     return (
-      <I18n translations={translations} initialLang={defaultLanguage}>
-        <CookiesProvider>
-          <StaticRouter location={request.url} context={{}}>
-            <GAListener>
-              <GTManager>
-                <Route
-                  path="/"
-                  render={(props) =>
-                    <Route
-                      {...props}
-                      component={PrimaryLayout}
-                    />
-                  }
-                />
-              </GTManager>
-            </GAListener>
-          </StaticRouter>
-        </CookiesProvider>
-      </I18n>
+      <CacheBuster>
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+          if (loading) return null;
+          if (!loading && !isLatestVersion) {
+            refreshCacheAndReload();
+          }
+
+          return (
+            <I18n translations={translations} initialLang={defaultLanguage}>
+              <CookiesProvider>
+                <StaticRouter location={request.url} context={{}}>
+                  <GAListener>
+                    <GTManager>
+                      <Route
+                        path="/"
+                        render={(props) =>
+                          <Route
+                            {...props}
+                            component={PrimaryLayout}
+                          />
+                        }
+                      />
+                    </GTManager>
+                  </GAListener>
+                </StaticRouter>
+              </CookiesProvider>
+            </I18n>
+          );
+        }}
+      </CacheBuster>
     );
   }
 }
