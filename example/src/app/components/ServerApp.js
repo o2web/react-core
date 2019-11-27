@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import I18n from 'redux-i18n';
 import { CookiesProvider } from 'react-cookie';
 import { StaticRouter, Route } from 'react-router-dom';
-import { GAListener, GTManager, CacheBuster } from 'o2web-react-core';
+import { GAListener, GTManager, CacheBuster, BaseRoute } from 'o2web-react-core';
 
 import translations, {
   availableLanguages,
@@ -58,7 +58,7 @@ class ServerApp extends Component {
                       <Route
                         path="/"
                         render={(props) =>
-                          <Route
+                          <BaseRoute
                             {...props}
                             component={PrimaryLayout}
                           />
