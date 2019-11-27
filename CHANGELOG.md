@@ -26,27 +26,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add GTM wrapper 
 - CHANGELOG file
 
-## [0.8.1] - 2019-10-29
+## [0.8.1] - 2019-11-26
 ### Added
 - Resolve issue that made redirection loop
 - CHANGELOG file
 
-## [0.8.2] - 2019-10-29
+## [0.8.2] - 2019-11-26
 ### Added
 - Add some polyfills
 - CHANGELOG file
 
-## [0.8.3] - 2019-10-29
+## [0.8.3] - 2019-11-26
 ### Added
 - Fix some issues with IE 11
 - CHANGELOG file
 
-## [0.8.5] - 2019-10-29
+## [0.8.5] - 2019-11-26
 ### Added
 - Fix issue with some redirect patterns
 - CHANGELOG file
 
-## [0.8.5] - 2019-10-29
+## [0.8.6] - 2019-11-26
 ### Added
 - Add support for redirect to external domains
 - CHANGELOG file
+
+## [0.9.0] - 2019-11-27
+### Added
+- Generate robots.txt when building the app
+- CHANGELOG file
+
+
