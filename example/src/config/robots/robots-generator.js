@@ -15,7 +15,7 @@ async function generateRobot() {
     ],
     sitemap: `${process.env.SITE_DOMAIN}sitemap.xml`,
   }).then(robot => {
-    fs.writeFileSync('./build/static/robots.txt', robot, () => {
+    fs.writeFileSync('./build/robots.txt', robot, () => {
       console.log('Robots.txt generated!');
     });
   })

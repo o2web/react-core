@@ -11,7 +11,7 @@ async function generateSitemap() {
     // Generate Sitemap
     const newSitemap = new Sitemap(router);
     const generatedSitemap = await sitemapConfig.configureSitemap(newSitemap);
-    generatedSitemap.save('./build/static/sitemap.xml');
+    generatedSitemap.save('./build/sitemap.xml');
     return generatedSitemap;
   } catch (e) {
     console.log(e);

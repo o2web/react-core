@@ -22,8 +22,8 @@ const app = express();
 
 app.use('/static', express.static('build/static'));
 app.use('/build', express.static('build'));
-app.use('/robots.txt', express.static('build/static/robots.txt'));
-app.use('/sitemap.xml', express.static('build/static/sitemap.xml'));
+app.use('/robots.txt', express.static('build/robots.txt'));
+app.use('/sitemap.xml', express.static('build/sitemap.xml'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
