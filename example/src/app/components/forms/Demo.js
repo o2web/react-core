@@ -76,7 +76,7 @@ class DemoForm extends Component {
           placeholder="Enter text here..."
         />
         <div>
-          <button type="submit" disabled={pristine || submitting}>
+          <button type="submit" id="submit-form" disabled={pristine || submitting}>
             Submit
           </button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>
