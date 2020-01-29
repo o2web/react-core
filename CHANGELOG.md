@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.9.1] - 2020-01-28
 ### Added
-- Added <TranslatedRoute> component and translatePath method
+- Added translatePath method
 - CHANGELOG file
 
 

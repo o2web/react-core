@@ -9,7 +9,7 @@ import NavLink from './app/components/router/NavLink';
 import Redirector from './app/components/router/Redirector';
 import Route from './app/components/router/Route';
 import translateRoute from './app/helpers/routes-translator';
-import TranslatedRoute, { translatePath } from './app/components/router/TranslatedRoute';
+import translatePath from './app/helpers/translatePath';
 import ValidateRoutes from './app/components/router/ValidateRoutes';
 
 export {
@@ -24,7 +24,6 @@ export {
   Redirector,
   Route,
   translateRoute,
-  TranslatedRoute,
   translatePath,
   ValidateRoutes,
 };
