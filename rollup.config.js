@@ -5,7 +5,6 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import { eslint } from 'rollup-plugin-eslint';
-
 import pkg from './package.json';
 
 export default {
@@ -35,5 +34,9 @@ export default {
     resolve(),
     commonjs(),
   ],
-  external: ['o2web-react-core'],
+  external: [
+    ...Object.keys(pkg.peerDependencies || {}),
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.devDependencies || {}),
+  ],
 };
