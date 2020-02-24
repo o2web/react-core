@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0] - 2019-10-29
 ### Added
-- Add GTM wrapper 
+- Add GTM wrapper
 - CHANGELOG file
 
 ## [0.8.1] - 2019-11-26
@@ -59,6 +59,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.9.1] - 2020-01-28
 ### Added
 - Added translatePath method
+- CHANGELOG file
+
+## [0.9.2] - 2020-02-21
+### Added
+- Added React-Breadcrumbs to dependencies
+- CHANGELOG file
+
+## [0.9.3] - 2020-02-24
+### Added
+- Fixed package.json dependencies and rollup.config
 - CHANGELOG file
 
 
