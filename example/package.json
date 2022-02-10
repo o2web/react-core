@@ -30,7 +30,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "memory-cache": "^0.2.0",
     "node-fetch": "^2.3.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "o2web-react-core": "file:..",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
